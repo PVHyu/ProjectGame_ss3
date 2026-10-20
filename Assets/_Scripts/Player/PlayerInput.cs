@@ -3,17 +3,20 @@ using UnityEngine;
 public class PlayerInput : BaseMonoBehaviour
 {
     private PlayerMovement movement;
+    private PlayerSkills skills;
     
     private void Update()
     {
         HandleMovementInput();
         HandleJumpInput();
+        HandleAttackInput();
     }
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadMovement();
+        LoadSkills();
     }
 
     protected virtual void LoadMovement()
@@ -22,6 +25,14 @@ public class PlayerInput : BaseMonoBehaviour
 
         movement = transform.parent.GetComponentInChildren<PlayerMovement>();
         Debug.Log(transform.name + ": LoadMovement", gameObject);
+    }
+
+    protected virtual void LoadSkills()
+    {
+        if (skills != null) return;
+
+        skills = transform.parent.GetComponentInChildren<PlayerSkills>();
+        Debug.Log(transform.name + ": LoadSkills", gameObject);
     }
 
     private void HandleMovementInput()
@@ -36,6 +47,14 @@ public class PlayerInput : BaseMonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             movement.RequestJump();
+        }
+    }
+
+    private void HandleAttackInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            skills.NormalAttack();
         }
     }
 }

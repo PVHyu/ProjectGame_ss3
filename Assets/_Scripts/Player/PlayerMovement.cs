@@ -119,6 +119,4 @@ public class PlayerMovement : BaseMonoBehaviour
             playerAnimation.SetFacingRight(false);
         }
     }
-
-    
 }

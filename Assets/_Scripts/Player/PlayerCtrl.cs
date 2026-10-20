@@ -14,6 +14,8 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
     public PlayerAnimation PlayerAnimation => playerAnimation;
     [SerializeField] private PlayerInput playerInput;
     public PlayerInput PlayerInput => playerInput;
+    [SerializeField] private PlayerSkills playerSkills;
+    public PlayerSkills PlayerSkills => playerSkills;
 
     protected override void LoadComponents()
     {
@@ -24,6 +26,7 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         this.LoadAnimator();
         this.LoadPlayerAnimation();
         this.LoadPlayerInput();
+        this.LoadPlayerSkills();
     }
 
     protected virtual void LoadPlayerMovement()
@@ -66,6 +69,13 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         if (this.playerInput != null) return;
         this.playerInput = GetComponentInChildren<PlayerInput>();
         Debug.Log(transform.name + ": Load Player Input", gameObject);
+    }
+
+    protected virtual void LoadPlayerSkills()
+    {
+        if (this.playerSkills != null) return;
+        this.playerSkills = GetComponentInChildren<PlayerSkills>();
+        Debug.Log(transform.name + ": Load Player Skills", gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

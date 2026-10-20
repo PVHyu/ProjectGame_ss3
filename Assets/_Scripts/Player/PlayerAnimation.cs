@@ -49,7 +49,7 @@ public class PlayerAnimation : BaseMonoBehaviour
         spriteRenderer.flipX = !value;
     }
 
-    public void SetAttacking(bool value)
+    public void SetAttack(bool value)
     {
         animator.SetBool("isAttack", value);
     }
