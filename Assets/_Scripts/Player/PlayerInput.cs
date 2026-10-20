@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerInput : BaseMonoBehaviour
 {
     private PlayerMovement movement;
-    private PlayerSkills skills;
+    private PlayerSkills playerSkills;
     
     private void Update()
     {
@@ -29,9 +29,9 @@ public class PlayerInput : BaseMonoBehaviour
 
     protected virtual void LoadSkills()
     {
-        if (skills != null) return;
+        if (playerSkills != null) return;
 
-        skills = transform.parent.GetComponentInChildren<PlayerSkills>();
+        playerSkills = transform.parent.GetComponentInChildren<PlayerSkills>();
         Debug.Log(transform.name + ": LoadSkills", gameObject);
     }
 
@@ -52,9 +52,9 @@ public class PlayerInput : BaseMonoBehaviour
 
     private void HandleAttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            skills.NormalAttack();
-        }
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        if (playerSkills == null) return;
+        Skill skill = playerSkills?.GetSkill("Normal Attack");
+        skill?.Attack();
     }
 }

@@ -1,35 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkills : BaseMonoBehaviour
+public class PlayerSkills : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private PlayerAnimation playerAnimation;
+    [SerializeField] private List<Skill> skills = new();
 
-    protected override void LoadComponents()
+    protected virtual void Reset()
     {
-        base.LoadComponents();
-        LoadPlayerMovement();
-        LoadPlayerAnimation();
+        LoadSkills();
     }
 
-    protected virtual void LoadPlayerMovement()
+    protected virtual void LoadSkills()
     {
-        if (playerMovement != null) return;
+        skills.Clear(); 
 
-        playerMovement = transform.parent.GetComponentInChildren<PlayerMovement>();
-        Debug.Log(transform.name + ": LoadPlayerMovement", gameObject);
+        Skill[] foundSkills =
+            GetComponentsInChildren<Skill>(true);
+
+        skills.AddRange(foundSkills);  
+
+        Debug.Log($"Loaded {skills.Count} skills", gameObject);
     }
 
-    protected virtual void LoadPlayerAnimation()
+    public Skill GetSkill(string skillName)
     {
-        if (playerAnimation != null) return;
-
-        playerAnimation = transform.parent.GetComponentInChildren<PlayerAnimation>();
-        Debug.Log(transform.name + ": LoadPlayerAnimation", gameObject);
-    }
-
-    public void NormalAttack()
-    {
-        playerAnimation.SetAttack(true);
+        return skills.Find(skill => skill.name == skillName);
     }
 }
