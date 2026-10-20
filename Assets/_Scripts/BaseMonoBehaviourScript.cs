@@ -4,7 +4,7 @@ public class BaseMonoBehaviour : MonoBehaviour
 {
     protected virtual void Start()
     {
-        //For override
+        //For override  
     }
     protected virtual void Reset()
     {
