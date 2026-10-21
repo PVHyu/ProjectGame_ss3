@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class DamageReceiver : BaseMonoBehaviour
 {
-    public int MaxHP {get; set;} = 10;
-    public int CurrentHP {get; set;} = 10;
+    public int MaxHP {get; set;} = 100;
+    public int CurrentHP {get; set;} = 100;
     protected bool isDead = false;
     [SerializeField] protected bool isImmotal = false;
 
@@ -31,6 +31,7 @@ public abstract class DamageReceiver : BaseMonoBehaviour
 
     public virtual bool IsDead()
     {
+        Debug.Log(transform.name + ": " + CurrentHP + " / " + MaxHP);
         return this.isDead = this.CurrentHP <= 0;
     }
 

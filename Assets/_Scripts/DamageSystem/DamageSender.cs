@@ -10,7 +10,8 @@ public abstract class DamageSender : BaseMonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rigidbody;
     [SerializeField] protected CircleCollider2D collider;
-    [SerializeField] protected int damage = 10;
+    private int damage = 1;
+    public int Damage { get => damage; set => damage = value; }
 
     protected override void LoadComponents()
     {

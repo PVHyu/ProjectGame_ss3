@@ -4,6 +4,8 @@ public class NormalAttack : Skill
 {
     [SerializeField] private PlayerAnimation playerAnimation;
     [SerializeField] private AttackHitbox attackHitbox;
+    [SerializeField] private int damage = 10;
+    
 
     protected override void LoadComponents()
     {
@@ -31,6 +33,12 @@ public class NormalAttack : Skill
     public override void Attack()
     {
         playerAnimation.SetAttack(true);
+        SetDamage(this.damage);
         attackHitbox.BeginAttack();
+    }
+
+    protected virtual void SetDamage(int damage)
+    {
+        this.attackHitbox.Damage = damage;
     }
 }

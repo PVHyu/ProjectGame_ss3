@@ -46,6 +46,7 @@ public class AttackHitbox : DamageSender
     {
         if (this.collider == null || !this.collider.enabled) return;
         if (!hitEnemies.Add(other.GetComponent<EnemyHealth>())) return;
+        Debug.Log("Hit Enemy: " + other.name);
         base.OnTriggerEnter2D(other);
     }
 }
