@@ -3,11 +3,21 @@ using UnityEngine;
 public class NormalAttack : Skill
 {
     [SerializeField] private PlayerAnimation playerAnimation;
+    [SerializeField] private AttackHitbox attackHitbox;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadPlayerAnimation();
+        LoadAttackHitbox();
+    }
+
+    protected virtual void LoadAttackHitbox()
+    {
+        if (attackHitbox != null) return;
+
+        attackHitbox = GetComponentInParent<AttackHitbox>();
+        Debug.Log(transform.name + ": LoadAttackHitbox", gameObject);
     }
 
     protected virtual void LoadPlayerAnimation()
@@ -21,5 +31,6 @@ public class NormalAttack : Skill
     public override void Attack()
     {
         playerAnimation.SetAttack(true);
+        attackHitbox.BeginAttack();
     }
 }

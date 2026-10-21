@@ -4,6 +4,7 @@ public class PlayerAnimation : BaseMonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    public bool IsFlipped => spriteRenderer.flipX;
 
     protected override void LoadComponents()
     {
