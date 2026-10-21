@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Skill : BaseMonoBehaviour
+public abstract class PlayerSkill : BaseMonoBehaviour
 {
    public abstract void Attack();
 }

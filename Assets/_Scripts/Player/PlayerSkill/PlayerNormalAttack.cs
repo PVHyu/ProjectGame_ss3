@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class NormalAttack : Skill
+public class PlayerNormalAttack : PlayerSkill
 {
     [SerializeField] private PlayerAnimation playerAnimation;
     [SerializeField] private AttackHitbox attackHitbox;
     [SerializeField] private int damage = 10;
     
-
     protected override void LoadComponents()
     {
         base.LoadComponents();

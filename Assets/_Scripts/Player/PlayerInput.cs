@@ -54,7 +54,7 @@ public class PlayerInput : BaseMonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
         if (playerSkills == null) return;
-        Skill skill = playerSkills?.GetSkill("Normal Attack");
+        PlayerSkill skill = playerSkills?.GetSkill("Normal Attack");
         skill?.Attack();
     }
 }

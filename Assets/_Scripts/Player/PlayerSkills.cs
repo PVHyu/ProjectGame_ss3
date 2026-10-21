@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-    [SerializeField] private List<Skill> skills = new();
+    [SerializeField] private List<PlayerSkill> skills = new();
 
     protected virtual void Reset()
     {
@@ -14,15 +14,15 @@ public class PlayerSkills : MonoBehaviour
     {
         skills.Clear(); 
 
-        Skill[] foundSkills =
-            GetComponentsInChildren<Skill>(true);
+        PlayerSkill[] foundSkills =
+            GetComponentsInChildren<PlayerSkill>(true);
 
         skills.AddRange(foundSkills);  
 
         Debug.Log($"Loaded {skills.Count} skills", gameObject);
     }
 
-    public Skill GetSkill(string skillName)
+    public PlayerSkill GetSkill(string skillName)
     {
         return skills.Find(skill => skill.name == skillName);
     }

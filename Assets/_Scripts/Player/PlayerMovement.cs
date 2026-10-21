@@ -51,7 +51,6 @@ public class PlayerMovement : BaseMonoBehaviour
         if (playerAnimation != null) return;
 
         playerAnimation = transform.parent.GetComponentInChildren<PlayerAnimation>();
-        Debug.Log(transform.name + ": LoadAnimation", gameObject);
     }
 
     public void SetMoveInput(float value)
