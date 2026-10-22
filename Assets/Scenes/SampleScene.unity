@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 250600746}
   - component: {fileID: 250600747}
   m_Layer: 0
-  m_Name: DamageReceiver
+  m_Name: PlayerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,6 +586,7 @@ MonoBehaviour:
   playerAnimation: {fileID: 1444250564}
   playerInput: {fileID: 970856312}
   playerSkills: {fileID: 943291339}
+  playerHealth: {fileID: 250600747}
 --- !u!50 &423350630
 Rigidbody2D:
   serializedVersion: 5

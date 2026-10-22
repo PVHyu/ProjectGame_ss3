@@ -40,7 +40,8 @@ public class PlayerMovement : BaseMonoBehaviour
 
     public void RequestJump()
     {
-        if (!IsGrounded) return;
+        if (!IsGrounded || PlayerCtrl.Instance.PlayerHealth.IsDead()) return;
+
         PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(PlayerCtrl.Instance.Rb2d.linearVelocity.x, 0f);
 
         PlayerCtrl.Instance.Rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -75,6 +76,8 @@ public class PlayerMovement : BaseMonoBehaviour
 
     private void Move()
     {
+        if(PlayerCtrl.Instance.PlayerHealth.IsDead()) return;
+
         PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(moveInput * moveSpeed, PlayerCtrl.Instance.Rb2d.linearVelocity.y);
 
         PlayerCtrl.Instance.PlayerAnimation.SetRunning(moveInput != 0f);

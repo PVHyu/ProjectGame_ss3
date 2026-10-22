@@ -16,6 +16,8 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
     public PlayerInput PlayerInput => playerInput;
     [SerializeField] private PlayerSkills playerSkills;
     public PlayerSkills PlayerSkills => playerSkills;
+    [SerializeField] private PlayerHealth playerHealth;
+    public PlayerHealth PlayerHealth => playerHealth;
 
     protected override void LoadComponents()
     {
@@ -27,6 +29,7 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         this.LoadPlayerAnimation();
         this.LoadPlayerInput();
         this.LoadPlayerSkills();
+        this.LoadPlayerHealth();
     }
 
     protected virtual void LoadPlayerMovement()
@@ -34,6 +37,13 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         if (this.playerMovement != null) return;
         this.playerMovement = GetComponentInChildren<PlayerMovement>();
         Debug.Log(transform.name + ": Load Player Movement", gameObject);
+    }
+
+    protected virtual void LoadPlayerHealth()
+    {
+        if (this.playerHealth != null) return;
+        this.playerHealth = GetComponentInChildren<PlayerHealth>();
+        Debug.Log(transform.name + ": Load Player Health", gameObject);
     }
 
     protected virtual void LoadRigidbody2D()

@@ -7,6 +7,7 @@ public abstract class DamageReceiver : BaseMonoBehaviour
     public int MaxHP {get; set;} = 100;
     public int CurrentHP {get; set;} = 100;
     protected bool isDead = false;
+    
     [SerializeField] protected bool isImmotal = false;
 
     protected override void OnEnable()
