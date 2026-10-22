@@ -12,7 +12,8 @@ public class PlayerHealth : DamageReceiver
     protected override void OnDead()
     {
         base.OnDead();
-        Debug.Log(transform.name + ": OnDead", gameObject);
+        PlayerCtrl.Instance.PlayerAnimation.TriggerHit();
+        PlayerCtrl.Instance.PlayerAnimation.TriggerDead();
     }
 
     protected override void OnHurt()

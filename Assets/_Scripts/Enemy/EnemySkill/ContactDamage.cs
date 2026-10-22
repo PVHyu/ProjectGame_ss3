@@ -3,7 +3,7 @@ using UnityEngine;
 public class ContactDamage : BaseMonoBehaviour,IEnemySkill
 {
     [SerializeField] private ContactDamageBox contactDamageBox;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private int damage = 1;
 
     protected void FixedUpdate()
     {

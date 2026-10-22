@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   isImmotal: 0
-  playerMaxHP: 1000
+  playerMaxHP: 3
 --- !u!1 &333076558
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 2
-  jumpForce: 4
+  jumpForce: 3
   knockbackForceX: 2
   knockbackForceY: 2
   knockbackDuration: 1
@@ -1005,7 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ContactDamage
   contactDamageBox: {fileID: 1159938404}
-  damage: 10
+  damage: 1
 --- !u!114 &1159938404
 MonoBehaviour:
   m_ObjectHideFlags: 0

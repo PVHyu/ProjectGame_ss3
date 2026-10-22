@@ -30,10 +30,16 @@ public class PlayerAnimation : BaseMonoBehaviour
         PlayerCtrl.Instance.Animator.SetBool("isAttack", value);
     }
 
+    public void TriggerDead()
+    {
+       PlayerCtrl.Instance.Animator.SetTrigger("isDead");
+    }
+
     public void TriggerLand()
     {
         PlayerCtrl.Instance.Animator.SetTrigger("Ground");
     }
+
     public void TriggerHit()
     {
        PlayerCtrl.Instance.Animator.SetTrigger("isHitted");
