@@ -9,7 +9,6 @@ public class PlayerNormalAttack : PlayerSkill
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        LoadPlayerAnimation();
         LoadAttackHitbox();
     }
 
@@ -21,17 +20,9 @@ public class PlayerNormalAttack : PlayerSkill
         Debug.Log(transform.name + ": LoadAttackHitbox", gameObject);
     }
 
-    protected virtual void LoadPlayerAnimation()
-    {
-        if (playerAnimation != null) return;
-
-        playerAnimation = transform.root.GetComponentInChildren<PlayerAnimation>();
-        Debug.Log(transform.name + ": LoadPlayerAnimation", gameObject);
-    }
-
     public override void Attack()
     {
-        playerAnimation.SetAttack(true);
+        PlayerCtrl.Instance.PlayerAnimation.SetAttack(true);
         SetDamage(this.damage);
         attackHitbox.BeginAttack();
     }

@@ -1,31 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : BaseMonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private float jumpForce = 3f;
+    [SerializeField] private float knockbackForceX = 2f;
+    [SerializeField] private float knockbackForceY = 2f;
+    [SerializeField] private float knockbackDuration = 1f;
 
-    private Rigidbody2D rb2d;
-    private PlayerAnimation playerAnimation;
     private float moveInput;
+    private bool isKnockback;
 
     public bool IsGrounded { get; private set; }
     public bool IsJumping { get; private set; }
 
     void FixedUpdate()
     {
-        Move();
+        if (!isKnockback) Move();
         RequestFall();
     }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-
-        LoadRigidbody();
-        LoadAnimation();
-    }
-
 
     public void OnGroundEnter()
     {
@@ -38,21 +33,6 @@ public class PlayerMovement : BaseMonoBehaviour
         IsGrounded = false;
     }
 
-    protected virtual void LoadRigidbody()
-    {
-        if (rb2d != null) return;
-
-        rb2d = transform.parent.GetComponent<Rigidbody2D>();
-        Debug.Log(transform.name + ": LoadRigidbody", gameObject);
-    }
-
-    protected virtual void LoadAnimation()
-    {
-        if (playerAnimation != null) return;
-
-        playerAnimation = transform.parent.GetComponentInChildren<PlayerAnimation>();
-    }
-
     public void SetMoveInput(float value)
     {
         moveInput = value;
@@ -61,29 +41,23 @@ public class PlayerMovement : BaseMonoBehaviour
     public void RequestJump()
     {
         if (!IsGrounded) return;
-        rb2d.linearVelocity = new Vector2(
-            rb2d.linearVelocity.x,
-            0f
-        );
+        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(PlayerCtrl.Instance.Rb2d.linearVelocity.x, 0f);
 
-        rb2d.AddForce(
-            Vector2.up * jumpForce,
-            ForceMode2D.Impulse
-        );
+        PlayerCtrl.Instance.Rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
         Debug.Log("Jumping");
         IsJumping = true;
-        playerAnimation.SetJumping(IsJumping);
+        PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
     }
 
     private void RequestFall()
     {
-        if(rb2d.linearVelocity.y > 0f) return; 
-        if(rb2d.linearVelocity.y < 0f)
+        if(PlayerCtrl.Instance.Rb2d.linearVelocity.y > 0f) return; 
+        if(PlayerCtrl.Instance.Rb2d.linearVelocity.y < 0f)
         {
             IsJumping = false;
-            playerAnimation.SetJumping(IsJumping);
-            playerAnimation.SetFalling(true);
+            PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
+            PlayerCtrl.Instance.PlayerAnimation.SetFalling(true);
         }
         else
         {
@@ -95,27 +69,40 @@ public class PlayerMovement : BaseMonoBehaviour
     {
         if(!IsGrounded) return;
         IsJumping = false;
-        playerAnimation.SetJumping(IsJumping);
-        playerAnimation.TriggerLand();
+        PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
+        PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
     }
-
 
     private void Move()
     {
-        rb2d.linearVelocity = new Vector2(
-            moveInput * moveSpeed,
-            rb2d.linearVelocity.y
-        );
+        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(moveInput * moveSpeed, PlayerCtrl.Instance.Rb2d.linearVelocity.y);
 
-        playerAnimation.SetRunning(moveInput != 0f);
+        PlayerCtrl.Instance.PlayerAnimation.SetRunning(moveInput != 0f);
 
         if (moveInput > 0f)
-        {
-            playerAnimation.SetFacingRight(true);
-        }
+            PlayerCtrl.Instance.PlayerAnimation.SetFacingRight(true);
         else if (moveInput < 0f)
-        {
-            playerAnimation.SetFacingRight(false);
-        }
+            PlayerCtrl.Instance.PlayerAnimation.SetFacingRight(false);
+    }
+
+    public void Knockback(Vector2 enemyPosition)
+    {
+        StopAllCoroutines();
+        StartCoroutine(KnockbackRoutine(enemyPosition));
+    }
+
+    private IEnumerator KnockbackRoutine(Vector2 enemyPosition)
+    {
+        isKnockback = true;
+        float directionX = transform.position.x < enemyPosition.x ? -1f : 1f;
+
+        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(
+            directionX * knockbackForceX,
+            knockbackForceY
+        );
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        isKnockback = false;
     }
 }

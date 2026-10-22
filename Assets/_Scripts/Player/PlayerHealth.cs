@@ -18,6 +18,7 @@ public class PlayerHealth : DamageReceiver
     protected override void OnHurt()
     {
         base.OnHurt();
+        PlayerCtrl.Instance.PlayerAnimation.TriggerHit();
         Debug.Log(transform.name + ": OnHurt", gameObject);
     }
 }

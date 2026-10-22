@@ -2,61 +2,40 @@ using UnityEngine;
 
 public class PlayerAnimation : BaseMonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    public bool IsFlipped => spriteRenderer.flipX;
+    public bool IsFlipped => PlayerCtrl.Instance.SpriteRenderer.flipX;
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-
-        LoadAnimator();
-        LoadSpriteRenderer();
-    }
-
-    protected virtual void LoadAnimator()
-    {
-        if (animator != null) return;
-
-        animator = transform.parent.GetComponentInChildren<Animator>();
-        Debug.Log(transform.name + ": LoadAnimator", gameObject);
-    }
-
-    protected virtual void LoadSpriteRenderer()
-    {
-        if (spriteRenderer != null) return;
-
-        spriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
-        Debug.Log(transform.name + ": LoadSpriteRenderer", gameObject);
-    }
 
     public void SetRunning(bool value)
     {
-        animator.SetBool("isRunning", value);
+        PlayerCtrl.Instance.Animator.SetBool("isRunning", value);
     }
 
     public void SetJumping(bool value)
     {
-        animator.SetBool("isJumping", value);
+        PlayerCtrl.Instance.Animator.SetBool("isJumping", value);
     }
 
     public void SetFalling(bool value)
     {
-        animator.SetBool("isFalling", value);
+        PlayerCtrl.Instance.Animator.SetBool("isFalling", value);
     }
 
     public void SetFacingRight(bool value)
     {
-        spriteRenderer.flipX = !value;
+        PlayerCtrl.Instance.SpriteRenderer.flipX = !value;
     }
 
     public void SetAttack(bool value)
     {
-        animator.SetBool("isAttack", value);
+        PlayerCtrl.Instance.Animator.SetBool("isAttack", value);
     }
 
     public void TriggerLand()
     {
-        animator.SetTrigger("Ground");
+        PlayerCtrl.Instance.Animator.SetTrigger("Ground");
+    }
+    public void TriggerHit()
+    {
+       PlayerCtrl.Instance.Animator.SetTrigger("isHitted");
     }
 }
