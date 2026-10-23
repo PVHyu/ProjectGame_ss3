@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124941325}
+  - component: {fileID: 124941326}
   m_Layer: 0
   m_Name: PigMovement
   m_TagString: Untagged
@@ -150,6 +151,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 394559500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124941326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124941324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigMovement
 --- !u!1 &250600744
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394559500}
   - component: {fileID: 394559502}
+  - component: {fileID: 394559503}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -559,6 +573,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &394559503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394559499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc17b1aae45d694db820add611e63d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigCtrl
+  pigMovement: {fileID: 124941326}
+  rb2d: {fileID: 394559502}
+  spriteRenderer: {fileID: 1215555630}
+  animator: {fileID: 1215555631}
+  pigAnimation: {fileID: 435928410}
+  managingSkills: {fileID: 1159938403}
+  pigHealth: {fileID: 1764994440}
+  enemyData: {fileID: 11400000, guid: 8458fda6825bd3c45a55e6237605bd68, type: 2}
 --- !u!1 &423350624
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +650,7 @@ MonoBehaviour:
   animator: {fileID: 2109461473}
   playerAnimation: {fileID: 1444250564}
   playerInput: {fileID: 970856312}
-  playerSkills: {fileID: 943291339}
+  managingSkills: {fileID: 0}
   playerHealth: {fileID: 250600747}
 --- !u!50 &423350630
 Rigidbody2D:
@@ -654,6 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435928409}
+  - component: {fileID: 435928410}
   m_Layer: 0
   m_Name: PigAnimation
   m_TagString: Untagged
@@ -676,6 +711,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 394559500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435928410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435928408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b278a22ccb3c9440a789850bd5fa574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigrAnimation
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +966,7 @@ GameObject:
   - component: {fileID: 1159938402}
   - component: {fileID: 1159938403}
   m_Layer: 0
-  m_Name: PigSkill
+  m_Name: PigSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1298,7 +1345,7 @@ Animator:
   m_GameObject: {fileID: 1215555629}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0123b3856b6ebea4680b8cd8e67c1ec8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2521c2c59debaa94a876ae895a559a74, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2699,7 +2746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   isImmotal: 0
-  enemyMaxHP: 50
 --- !u!1 &1889727089
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BoxForPlayerNormalAttack : AttackBox
 {
-    private readonly HashSet<EnemyHealth> hitEnemies = new();
+    private readonly HashSet<PigHealth> hitEnemies = new();
 
     void FixedUpdate()
     {
@@ -32,7 +32,7 @@ public class BoxForPlayerNormalAttack : AttackBox
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (this.collider == null || !this.collider.enabled) return;
-        if (!hitEnemies.Add(other.GetComponent<EnemyHealth>())) return;
+        if (!hitEnemies.Add(other.GetComponent<PigHealth>())) return;
         Debug.Log("Hit Enemy: " + other.name);
         base.OnTriggerEnter2D(other);
     }

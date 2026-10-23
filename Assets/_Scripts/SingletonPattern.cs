@@ -29,6 +29,4 @@ public abstract class SingletonPattern<T> : BaseMonoBehaviour where T :BaseMonoB
         }
         if(_instance != this) Debug.LogError("Another instance of SingletonExample already exist");
     }
-
-   
 }

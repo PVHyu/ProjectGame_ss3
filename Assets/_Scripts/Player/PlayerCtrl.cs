@@ -14,8 +14,8 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
     public PlayerAnimation PlayerAnimation => playerAnimation;
     [SerializeField] private PlayerInput playerInput;
     public PlayerInput PlayerInput => playerInput;
-    [SerializeField] private ManagingSkills playerSkills;
-    public ManagingSkills PlayerSkills => playerSkills;
+    [SerializeField] private ManagingSkills managingSkills;
+    public ManagingSkills ManagingSkills => managingSkills;
     [SerializeField] private PlayerHealth playerHealth;
     public PlayerHealth PlayerHealth => playerHealth;
 
@@ -28,7 +28,7 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         this.LoadAnimator();
         this.LoadPlayerAnimation();
         this.LoadPlayerInput();
-        this.LoadPlayerSkills();
+        this.LoadManagingSkills();
         this.LoadPlayerHealth();
     }
 
@@ -81,10 +81,10 @@ public class PlayerCtrl : SingletonPattern<PlayerCtrl>
         Debug.Log(transform.name + ": Load Player Input", gameObject);
     }
 
-    protected virtual void LoadPlayerSkills()
+    protected virtual void LoadManagingSkills()
     {
-        if (this.playerSkills != null) return;
-        this.playerSkills = GetComponentInChildren<ManagingSkills>();
+        if (this.managingSkills != null) return;
+        this.managingSkills = GetComponentInChildren<ManagingSkills>();
         Debug.Log(transform.name + ": Load Player Skills", gameObject);
     }
 
