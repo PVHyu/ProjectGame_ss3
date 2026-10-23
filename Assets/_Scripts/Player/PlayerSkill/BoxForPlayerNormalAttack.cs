@@ -1,29 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AttackHitbox : DamageSender
+public class BoxForPlayerNormalAttack : AttackBox
 {
     private readonly HashSet<EnemyHealth> hitEnemies = new();
-    [SerializeField] private float attackDuration = 0.1f;
-    private float attackTimer = 0f;
 
     void FixedUpdate()
     {
         this.CounterAttack();
     }
-    
-    protected virtual void CounterAttack()
-    {
-        if (this.collider == null || !this.collider.enabled) return;
-        this.attackTimer += Time.fixedDeltaTime;
-        if (this.attackTimer >= this.attackDuration)
-        {
-            this.EndAttack();
-            this.attackTimer = 0f;
-        }
-    }
 
-    public void BeginAttack()
+    public override void BeginAttack()
     {
         hitEnemies.Clear();
         if (this.collider == null) return;
@@ -37,7 +24,7 @@ public class AttackHitbox : DamageSender
         }
     }
 
-    public void EndAttack()
+    public override void EndAttack()
     {
         if (this.collider != null) this.collider.enabled = false;
     }

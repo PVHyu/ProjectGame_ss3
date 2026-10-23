@@ -1,19 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class ContactDamageBox : DamageSender
+public class ContactDamageBox : AttackBox
 {
     private DamageReceiver damageReceiver;
 
-    public void BeginAttack()
+    public override void BeginAttack()
     {
         if (this.collider == null) return;
         this.collider.enabled = true;
     }
 
+    public override void EndAttack() {}
+
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "PigDamageReceiver") return;
+
+        Debug.Log(other.name + "touch enemy");
 
         damageReceiver = other.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : DamageReceiver
 {
-    [SerializeField] private int playerMaxHP = 100;
+    [SerializeField] private int playerMaxHP = 3;
     protected override void Start()
     {
         base.Start();

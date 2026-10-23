@@ -217,8 +217,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.02}
-  m_Size: {x: 0.43, y: 0.6}
+  m_Offset: {x: -0.01, y: -0.01}
+  m_Size: {x: 0.4, y: 0.6}
   m_Direction: 0
 --- !u!114 &250600747
 MonoBehaviour:
@@ -233,7 +233,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   isImmotal: 0
-  playerMaxHP: 300
+  playerMaxHP: 3
+--- !u!1 &311035242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311035243}
+  m_Layer: 0
+  m_Name: PigNormalAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &311035243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311035242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1159938402}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333076558
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,8 +568,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423350625}
-  - component: {fileID: 423350628}
   - component: {fileID: 423350630}
+  - component: {fileID: 423350628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -563,8 +594,8 @@ Transform:
   - {fileID: 1444250565}
   - {fileID: 748754204}
   - {fileID: 970856313}
-  - {fileID: 943291340}
   - {fileID: 250600745}
+  - {fileID: 943291340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &423350628
@@ -795,10 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 943291340}
-  - component: {fileID: 943291343}
-  - component: {fileID: 943291342}
   - component: {fileID: 943291339}
-  - component: {fileID: 943291341}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -836,84 +864,6 @@ Transform:
   - {fileID: 1182757282}
   m_Father: {fileID: 423350625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &943291341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943291338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf631fe42addfa45b7043933a4bbfb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
-  rigidbody: {fileID: 943291343}
-  collider: {fileID: 943291342}
-  attackDuration: 0.1
---- !u!58 &943291342
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943291338}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.6, y: 0}
-  m_Radius: 0.25
---- !u!50 &943291343
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943291338}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &970856311
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,10 +917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1159938402}
-  - component: {fileID: 1159938406}
-  - component: {fileID: 1159938405}
   - component: {fileID: 1159938403}
-  - component: {fileID: 1159938404}
   m_Layer: 0
   m_Name: PigSkill
   m_TagString: Untagged
@@ -990,7 +937,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1176325139}
+  - {fileID: 311035243}
   m_Father: {fileID: 394559500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1159938403
@@ -1002,33 +951,83 @@ MonoBehaviour:
   m_GameObject: {fileID: 1159938401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd428a374ce439a489873b3b65775835, type: 3}
+  m_Script: {fileID: 11500000, guid: b4d69542cb2132d4b87e565f6d110df8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ContactDamage
-  contactDamageBox: {fileID: 1159938404}
-  damage: 1
---- !u!114 &1159938404
+  m_EditorClassIdentifier: Assembly-CSharp::ManagingSkills
+  skills:
+  - {fileID: 1176325140}
+--- !u!1 &1176325138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176325139}
+  - component: {fileID: 1176325143}
+  - component: {fileID: 1176325142}
+  - component: {fileID: 1176325141}
+  - component: {fileID: 1176325140}
+  m_Layer: 0
+  m_Name: ContactDamage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1176325139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176325138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1159938402}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176325140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159938401}
+  m_GameObject: {fileID: 1176325138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd428a374ce439a489873b3b65775835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContactDamage
+  attackBox: {fileID: 1176325141}
+  damageContact: 1
+--- !u!114 &1176325141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176325138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e8936803b020494cb5b7320c9358c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ContactDamageBox
-  rigidbody: {fileID: 1159938406}
-  collider: {fileID: 1159938405}
---- !u!58 &1159938405
+  rigidbody: {fileID: 1176325143}
+  collider: {fileID: 1176325142}
+  attackDuration: 0.1
+--- !u!58 &1176325142
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159938401}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1176325138}
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1055,16 +1054,16 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01, y: -0.1}
-  m_Radius: 0.18
---- !u!50 &1159938406
+  m_Offset: {x: -0.02, y: -0.1}
+  m_Radius: 0.2
+--- !u!50 &1176325143
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159938401}
+  m_GameObject: {fileID: 1176325138}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -1083,7 +1082,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!1 &1182757280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1092,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182757282}
+  - component: {fileID: 1182757285}
+  - component: {fileID: 1182757284}
+  - component: {fileID: 1182757283}
   - component: {fileID: 1182757281}
   m_Layer: 0
   m_Name: Normal Attack
@@ -1112,10 +1114,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 323e92061cde4604a8c57ff7f94a3ba0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalAttack
-  playerAnimation: {fileID: 1444250564}
-  attackHitbox: {fileID: 943291341}
-  damage: 10
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerNormalAttack
+  attackBox: {fileID: 1182757283}
+  normalDamage: 1
 --- !u!4 &1182757282
 Transform:
   m_ObjectHideFlags: 0
@@ -1131,6 +1132,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 943291340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1182757283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182757280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf631fe42addfa45b7043933a4bbfb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxForPlayerNormalAttack
+  rigidbody: {fileID: 1182757285}
+  collider: {fileID: 1182757284}
+  attackDuration: 0.1
+--- !u!58 &1182757284
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182757280}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.6, y: 0}
+  m_Radius: 0.25
+--- !u!50 &1182757285
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182757280}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1215555629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,6 +3064,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 423350625}
   - {fileID: 1581652080}
+  - {fileID: 423350625}
   - {fileID: 1889727090}

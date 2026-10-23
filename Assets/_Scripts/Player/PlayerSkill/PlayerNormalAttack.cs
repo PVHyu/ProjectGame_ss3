@@ -1,34 +1,20 @@
+using System;
+using UnityEditor.Build;
 using UnityEngine;
 
-public class PlayerNormalAttack : PlayerSkill
-{
-    [SerializeField] private PlayerAnimation playerAnimation;
-    [SerializeField] private AttackHitbox attackHitbox;
-    [SerializeField] private int damage = 10;
-    
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        LoadAttackHitbox();
-    }
-
-    protected virtual void LoadAttackHitbox()
-    {
-        if (attackHitbox != null) return;
-
-        attackHitbox = GetComponentInParent<AttackHitbox>();
-        Debug.Log(transform.name + ": LoadAttackHitbox", gameObject);
-    }
+public class PlayerNormalAttack : BaseAttack
+{   
+    [SerializeField] private int normalDamage = 1;
 
     public override void Attack()
     {
         PlayerCtrl.Instance.PlayerAnimation.SetAttack(true);
-        SetDamage(this.damage);
-        attackHitbox.BeginAttack();
+        SetDamage(normalDamage);
+        AttackBox.BeginAttack();
     }
 
-    protected virtual void SetDamage(int damage)
+    protected override void SetDamage(int normalDamage)
     {
-        this.attackHitbox.Damage = damage;
+      this.AttackBox.Damage = normalDamage;
     }
 }

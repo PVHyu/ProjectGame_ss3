@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkills : MonoBehaviour
+public class ManagingSkills : BaseMonoBehaviour
 {
-    [SerializeField] private List<PlayerSkill> skills = new();
+    [SerializeField] private List<BaseAttack> skills = new();
 
-    protected virtual void Reset()
+    protected override void Reset()
     {
         LoadSkills();
     }
@@ -14,15 +14,15 @@ public class PlayerSkills : MonoBehaviour
     {
         skills.Clear(); 
 
-        PlayerSkill[] foundSkills =
-            GetComponentsInChildren<PlayerSkill>(true);
+        BaseAttack[] foundSkills =
+            GetComponentsInChildren<BaseAttack>(true);
 
         skills.AddRange(foundSkills);  
 
         Debug.Log($"Loaded {skills.Count} skills", gameObject);
     }
 
-    public PlayerSkill GetSkill(string skillName)
+    public BaseAttack GetSkill(string skillName)
     {
         return skills.Find(skill => skill.name == skillName);
     }

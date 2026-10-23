@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
 
-public abstract class DamageSender : BaseMonoBehaviour
+public class DamageSender : BaseMonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rigidbody;
     [SerializeField] protected CircleCollider2D collider;
