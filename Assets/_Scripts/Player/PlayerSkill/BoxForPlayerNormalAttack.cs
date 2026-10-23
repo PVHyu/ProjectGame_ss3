@@ -33,7 +33,11 @@ public class BoxForPlayerNormalAttack : AttackBox
     {
         if (this.collider == null || !this.collider.enabled) return;
         if (!hitEnemies.Add(other.GetComponent<PigHealth>())) return;
-        Debug.Log("Hit Enemy: " + other.name);
+
         base.OnTriggerEnter2D(other);
+
+        if (PigCtrl.Instance.PigMovement != null)
+            PigCtrl.Instance.PigMovement.Knockback(transform.position);
+        
     }
 }

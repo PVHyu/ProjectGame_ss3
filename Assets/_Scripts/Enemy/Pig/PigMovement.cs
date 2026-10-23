@@ -1,16 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PigMovement : MonoBehaviour
+public class PigMovement : BaseMonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float knockbackForceX = 2f;
+    [SerializeField] private float knockbackForceY = 2f;
+    [SerializeField] private float knockbackDuration = 1f;
+
+    // private bool isKnockback;
+
+
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    private void Move()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Knockback(Vector2 hammerPosition)
     {
-        
+        Debug.Log("Calling Knockback");
+        StopAllCoroutines();
+        StartCoroutine(KnockbackRoutine(hammerPosition));
+    }
+
+    private IEnumerator KnockbackRoutine(Vector2 hammerPosition)
+    {
+        // isKnockback = true;
+        float directionX = transform.position.x < hammerPosition.x ? -1f : 1f;
+
+        PigCtrl.Instance.Rb2d.linearVelocity = new Vector2(
+            directionX * knockbackForceX,
+            knockbackForceY
+        );
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // isKnockback = false;
     }
 }

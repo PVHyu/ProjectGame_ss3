@@ -17,8 +17,6 @@ public class ContactDamageBox : AttackBox
     {
         if (other.gameObject.name == "PigDamageReceiver") return;
 
-        Debug.Log(other.name + "touch enemy");
-
         damageReceiver = other.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
 

@@ -163,6 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigMovement
+  knockbackForceX: 1
+  knockbackForceY: 2
+  knockbackDuration: 1
 --- !u!1 &250600744
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +557,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394559499}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2727,12 +2730,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.01, y: -0.13}
-  m_Radius: 0.15
+  m_Offset: {x: -0.01, y: -0.13}
+  m_Radius: 0.17
 --- !u!114 &1764994440
 MonoBehaviour:
   m_ObjectHideFlags: 0
