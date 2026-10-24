@@ -32,8 +32,6 @@ public class PlayerInput : BaseMonoBehaviour
         if (PlayerCtrl.Instance.PlayerMovement.IsJumping) return;
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
-        if (PlayerCtrl.Instance.ManagingSkills == null) return;
-        PlayerCtrl.Instance.PlayerMovement.StopMovement();
         BaseAttack skill = PlayerCtrl.Instance.ManagingSkills?.GetSkill("Normal Attack");
         skill?.Attack();
     }

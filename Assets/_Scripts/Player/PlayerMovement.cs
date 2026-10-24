@@ -90,12 +90,6 @@ public class PlayerMovement : BaseMonoBehaviour
             PlayerCtrl.Instance.PlayerAnimation.SetFacingRight(false);
     }
 
-    public void StopMovement()
-    {
-        moveInput = 0f;
-        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(0f, PlayerCtrl.Instance.Rb2d.linearVelocity.y);
-    }
-
     public void Knockback(Vector2 enemyPosition)
     {
         StopAllCoroutines();
