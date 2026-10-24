@@ -36,7 +36,7 @@ public class BoxForPlayerNormalAttack : AttackBox
 
         base.OnTriggerEnter2D(other);
 
-        if (PigCtrl.Instance.PigMovement != null)
+        if (PigCtrl.Instance.PigMovement != null && other.gameObject.CompareTag("Enemy"))
             PigCtrl.Instance.PigMovement.Knockback(transform.position);
         
     }

@@ -2,69 +2,39 @@ using UnityEngine;
 
 public class PlayerInput : BaseMonoBehaviour
 {
-    private PlayerMovement movement;
-    private ManagingSkills playerSkills;
-    
     private void Update()
     {
         HandleAttackInput();
-
-    if (!PlayerCtrl.Instance.PlayerAnimation.IsAttack())
-    {
         HandleMovementInput();
         HandleJumpInput();
     }
-    else
-    {
-        movement.SetMoveInput(0f);
-    }
-    }
-
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-        LoadMovement();
-        LoadSkills();
-    }
-
-    protected virtual void LoadMovement()
-    {
-        if (movement != null) return;
-
-        movement = transform.parent.GetComponentInChildren<PlayerMovement>();
-        Debug.Log(transform.name + ": LoadMovement", gameObject);
-    }
-
-    protected virtual void LoadSkills()
-    {
-        if (playerSkills != null) return;
-
-        playerSkills = transform.parent.GetComponentInChildren<ManagingSkills>();
-        Debug.Log(transform.name + ": LoadSkills", gameObject);
-    }
-
-    
 
     private void HandleMovementInput()
     {
+        if (PlayerCtrl.Instance.PlayerAnimation.IsAttack()) 
+        {
+            PlayerCtrl.Instance.PlayerMovement.SetMoveInput(0f);
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
-        movement.SetMoveInput(horizontal);
+        PlayerCtrl.Instance.PlayerMovement.SetMoveInput(horizontal);
     }
 
     private void HandleJumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            movement.RequestJump();
-        }
+        if (PlayerCtrl.Instance.PlayerAnimation.IsAttack()) return;
+        if (Input.GetKeyDown(KeyCode.UpArrow)) PlayerCtrl.Instance.PlayerMovement.RequestJump();
     }
 
     private void HandleAttackInput()
     {
-        if (!Input.GetKeyDown(KeyCode.Space) || !PlayerCtrl.Instance.PlayerAnimation.IsIdle()) return;
-        if (playerSkills == null) return;
+        if (PlayerCtrl.Instance.PlayerMovement.IsJumping) return;
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+
+        if (PlayerCtrl.Instance.ManagingSkills == null) return;
         PlayerCtrl.Instance.PlayerMovement.StopMovement();
-        BaseAttack skill = playerSkills?.GetSkill("Normal Attack");
+        BaseAttack skill = PlayerCtrl.Instance.ManagingSkills?.GetSkill("Normal Attack");
         skill?.Attack();
     }
 }
