@@ -623,7 +623,7 @@ Transform:
   m_GameObject: {fileID: 423350624}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.307, y: -1.442, z: 0}
+  m_LocalPosition: {x: -3.31, y: -1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -653,7 +653,7 @@ MonoBehaviour:
   animator: {fileID: 2109461473}
   playerAnimation: {fileID: 1444250564}
   playerInput: {fileID: 970856312}
-  managingSkills: {fileID: 0}
+  managingSkills: {fileID: 943291339}
   playerHealth: {fileID: 250600747}
 --- !u!50 &423350630
 Rigidbody2D:
@@ -2679,7 +2679,7 @@ GameObject:
   - component: {fileID: 1764994439}
   - component: {fileID: 1764994440}
   m_Layer: 0
-  m_Name: PigDamageReceiver
+  m_Name: PigHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188997d568b339941b41ef824dedd6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  isImmotal: 0
+  isImmotal: 1
 --- !u!1 &1889727089
 GameObject:
   m_ObjectHideFlags: 0

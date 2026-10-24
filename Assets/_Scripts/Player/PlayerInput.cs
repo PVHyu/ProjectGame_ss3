@@ -7,9 +7,17 @@ public class PlayerInput : BaseMonoBehaviour
     
     private void Update()
     {
+        HandleAttackInput();
+
+    if (!PlayerCtrl.Instance.PlayerAnimation.IsAttack())
+    {
         HandleMovementInput();
         HandleJumpInput();
-        HandleAttackInput();
+    }
+    else
+    {
+        movement.SetMoveInput(0f);
+    }
     }
 
     protected override void LoadComponents()
@@ -35,10 +43,11 @@ public class PlayerInput : BaseMonoBehaviour
         Debug.Log(transform.name + ": LoadSkills", gameObject);
     }
 
+    
+
     private void HandleMovementInput()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-
         movement.SetMoveInput(horizontal);
     }
 
@@ -52,8 +61,9 @@ public class PlayerInput : BaseMonoBehaviour
 
     private void HandleAttackInput()
     {
-        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        if (!Input.GetKeyDown(KeyCode.Space) || !PlayerCtrl.Instance.PlayerAnimation.IsIdle()) return;
         if (playerSkills == null) return;
+        PlayerCtrl.Instance.PlayerMovement.StopMovement();
         BaseAttack skill = playerSkills?.GetSkill("Normal Attack");
         skill?.Attack();
     }

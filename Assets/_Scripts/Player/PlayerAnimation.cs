@@ -4,6 +4,19 @@ public class PlayerAnimation : BaseMonoBehaviour
 {
     public bool IsFlipped => PlayerCtrl.Instance.SpriteRenderer.flipX;
 
+    public bool IsIdle()
+    {
+        AnimatorStateInfo stateInfo = PlayerCtrl.Instance.Animator.GetCurrentAnimatorStateInfo(0);
+
+        return stateInfo.IsName("Idle");
+    }
+
+    public bool IsAttack()
+    {
+        AnimatorStateInfo stateInfo = PlayerCtrl.Instance.Animator.GetCurrentAnimatorStateInfo(0);
+
+        return stateInfo.IsName("Attack");
+    }
 
     public void SetRunning(bool value)
     {

@@ -15,7 +15,7 @@ public class ContactDamageBox : AttackBox
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "PigDamageReceiver") return;
+        if (other.gameObject.name == "PigHealth") return;
 
         damageReceiver = other.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;

@@ -18,7 +18,7 @@ public class PlayerMovement : BaseMonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isKnockback) Move();
+        Move();
         RequestFall();
     }
 
@@ -77,6 +77,8 @@ public class PlayerMovement : BaseMonoBehaviour
     private void Move()
     {
         if(PlayerCtrl.Instance.PlayerHealth.IsDead()) return;
+        
+        if(isKnockback) return;
 
         PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(moveInput * moveSpeed, PlayerCtrl.Instance.Rb2d.linearVelocity.y);
 
@@ -86,6 +88,12 @@ public class PlayerMovement : BaseMonoBehaviour
             PlayerCtrl.Instance.PlayerAnimation.SetFacingRight(true);
         else if (moveInput < 0f)
             PlayerCtrl.Instance.PlayerAnimation.SetFacingRight(false);
+    }
+
+    public void StopMovement()
+    {
+        moveInput = 0f;
+        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(0f, PlayerCtrl.Instance.Rb2d.linearVelocity.y);
     }
 
     public void Knockback(Vector2 enemyPosition)
