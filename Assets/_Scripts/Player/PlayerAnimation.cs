@@ -11,17 +11,9 @@ public class PlayerAnimation : BaseMonoBehaviour
         return stateInfo.IsName("Idle");
     }
 
-    public bool IsRunning()
-    {
-        AnimatorStateInfo stateInfo = PlayerCtrl.Instance.Animator.GetCurrentAnimatorStateInfo(0);
-        Debug.Log("IsRunning is " + stateInfo.IsName("Running"));
-        return stateInfo.IsName("Running");
-    }
-
     public bool IsAttack()
     {
         AnimatorStateInfo stateInfo = PlayerCtrl.Instance.Animator.GetCurrentAnimatorStateInfo(0);
-        Debug.Log("IsAttacking is " + stateInfo.IsName("Attack"));
         return stateInfo.IsName("Attack");
     }
 

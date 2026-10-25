@@ -163,6 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigMovement
+  moveSpeed: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallCheckDistance: 0.15
+  groundCheckDistance: 0.5
+  edgeCheckOffset: 0.05
   knockbackForceX: 1
   knockbackForceY: 2
   knockbackDuration: 1
