@@ -4,8 +4,8 @@ public class PigCtrl : SingletonPattern<PigCtrl>
 {
     [SerializeField] private PigMovement pigMovement;
     public PigMovement PigMovement => pigMovement;
-    [SerializeField] private Rigidbody2D rb2d;
-    public Rigidbody2D Rb2d => rb2d;
+    [SerializeField] private Rigidbody2D r2d;
+    public Rigidbody2D R2d => r2d;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
     [SerializeField] private Animator animator;
@@ -47,8 +47,8 @@ public class PigCtrl : SingletonPattern<PigCtrl>
 
     protected virtual void LoadRigidbody2D()
     {
-        if (this.rb2d != null) return;
-        this.rb2d = GetComponent<Rigidbody2D>();
+        if (this.r2d != null) return;
+        this.r2d = GetComponent<Rigidbody2D>();
         Debug.Log(transform.name + ": Load Rigidbody2D", gameObject);
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class PigMovement : BaseMonoBehaviour
 {
     [Header("Movement")]
@@ -19,10 +20,8 @@ public class PigMovement : BaseMonoBehaviour
     [SerializeField] private float knockbackForceY = 2f;
     [SerializeField] private float knockbackDuration = 1f;
 
-    private Rigidbody2D rb;
-    private Collider2D col;
+    private Collider2D c2d;
 
-    // 1: sang phải, -1: sang trái
     private int direction = 1;
     private bool isKnockback;
     private Coroutine knockbackCoroutine;
@@ -30,12 +29,7 @@ public class PigMovement : BaseMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
-
-        if (col == null)
-            col = GetComponent<Collider2D>();
+        this.LoadBoxCollider2D();
     }
 
     private void FixedUpdate()
@@ -47,19 +41,21 @@ public class PigMovement : BaseMonoBehaviour
         Move();
     }
 
-    private void LoadCollider2D()
+    protected virtual void LoadBoxCollider2D()
     {
-        
+        if (this.c2d != null) return;
+        this.c2d = GetComponent<BoxCollider2D>();
+        Debug.Log(transform.name + ": Load BoxCollider2D", gameObject);
     }
 
     private void Move()
     {
-        PigCtrl.Instance.Rb2d.linearVelocity = new Vector2(direction * moveSpeed, PigCtrl.Instance.Rb2d.linearVelocity.y);
+        PigCtrl.Instance.R2d.linearVelocity = new Vector2(direction * moveSpeed, PigCtrl.Instance.R2d.linearVelocity.y);
     }
 
     private bool IsWallAhead()
     {
-        Vector2 origin = new Vector2(direction > 0 ? col.bounds.max.x : col.bounds.min.x, col.bounds.center.y);
+        Vector2 origin = new Vector2(direction > 0 ? c2d.bounds.max.x : c2d.bounds.min.x, c2d.bounds.center.y);
         Vector2 rayDirection = direction > 0 ? Vector2.right : Vector2.left;
 
         RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, wallCheckDistance, groundLayer);
@@ -71,9 +67,9 @@ public class PigMovement : BaseMonoBehaviour
 
     private bool IsEdgeAhead()
     {
-        float x = direction > 0 ? col.bounds.max.x + edgeCheckOffset : col.bounds.min.x - edgeCheckOffset;
+        float x = direction > 0 ? c2d.bounds.max.x + edgeCheckOffset : c2d.bounds.min.x - edgeCheckOffset;
 
-        Vector2 origin = new Vector2(x, col.bounds.min.y);
+        Vector2 origin = new Vector2(x, c2d.bounds.min.y);
 
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
 
@@ -85,9 +81,6 @@ public class PigMovement : BaseMonoBehaviour
     private void TurnAround()
     {
         direction *= -1;
-
-        // Nếu Pig có SpriteRenderer, lật sprite tại đây.
-        // Ví dụ: spriteRenderer.flipX = direction < 0;
     }
 
     private void FacePlayer(Vector2 playerPosition)
@@ -109,7 +102,7 @@ public class PigMovement : BaseMonoBehaviour
         isKnockback = true;
         float directionX = transform.position.x < hammerPosition.x ? -1f : 1f;
 
-        PigCtrl.Instance.Rb2d.linearVelocity = new Vector2(directionX * knockbackForceX, knockbackForceY);
+        PigCtrl.Instance.R2d.linearVelocity = new Vector2(directionX * knockbackForceX, knockbackForceY);
 
         yield return new WaitForSeconds(knockbackDuration);
 

@@ -24,6 +24,7 @@ public class PlayerMovement : BaseMonoBehaviour
 
     public void OnGroundEnter()
     {
+        Debug.Log("Grounded");
         IsGrounded = true;
         IsJumping = false;
     }
