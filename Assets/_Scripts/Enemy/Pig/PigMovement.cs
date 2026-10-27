@@ -7,11 +7,11 @@ using UnityEngine;
 public class PigMovement : BaseMonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Raycast")]
-    [SerializeField] private float wallCheckDistance = 0.15f;
+    [SerializeField] private float wallCheckDistance = 0.5f;
     [SerializeField] private float groundCheckDistance = 0.5f;
     [SerializeField] private float edgeCheckOffset = 0.05f;
 
@@ -35,9 +35,6 @@ public class PigMovement : BaseMonoBehaviour
     private void FixedUpdate()
     {
         if (isKnockback) return;
-
-        if (IsWallAhead() || IsEdgeAhead()) TurnAround();
-
         Move();
     }
 
@@ -50,6 +47,8 @@ public class PigMovement : BaseMonoBehaviour
 
     private void Move()
     {
+        if (PigCtrl.Instance.PigHealth.IsDead()) return;
+        if (IsWallAhead() || IsEdgeAhead()) TurnAround();
         PigCtrl.Instance.R2d.linearVelocity = new Vector2(direction * moveSpeed, PigCtrl.Instance.R2d.linearVelocity.y);
     }
 
@@ -80,6 +79,7 @@ public class PigMovement : BaseMonoBehaviour
 
     private void TurnAround()
     {
+        Debug.Log("TurnAround");
         direction *= -1;
     }
 
@@ -87,12 +87,12 @@ public class PigMovement : BaseMonoBehaviour
     {
         bool playerIsOnRight = playerPosition.x > transform.position.x;
 
-        PigCtrl.Instance.SpriteRenderer.flipX = !playerIsOnRight;
+        PigCtrl.Instance.SpriteRenderer.flipX = playerIsOnRight;
     }
 
     public void Knockback(Vector2 hammerPosition)
     {
-        StopCoroutine(knockbackCoroutine);
+        if (knockbackCoroutine != null) StopCoroutine(knockbackCoroutine);
         FacePlayer(hammerPosition);
         knockbackCoroutine = StartCoroutine(KnockbackRoutine(hammerPosition));
     }
