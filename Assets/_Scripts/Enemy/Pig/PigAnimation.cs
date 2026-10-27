@@ -15,9 +15,9 @@ public class PigAnimation : BaseMonoBehaviour
         PigCtrl.Instance.SpriteRenderer.flipX = !value;
     }
 
-    public void SetAttack(bool value)
+    public void TriggerAttack()
     {
-        PigCtrl.Instance.Animator.SetBool("isAttack", value);
+        PigCtrl.Instance.Animator.SetTrigger("isAttack");
     }
 
     public void TriggerDead()

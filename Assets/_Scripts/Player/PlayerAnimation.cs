@@ -37,9 +37,9 @@ public class PlayerAnimation : BaseMonoBehaviour
         PlayerCtrl.Instance.SpriteRenderer.flipX = !value;
     }
 
-    public void SetAttack(bool value)
+    public void TriggerAttack()
     {
-        PlayerCtrl.Instance.Animator.SetBool("isAttack", value);
+        PlayerCtrl.Instance.Animator.SetTrigger("isAttack");
     }
 
     public void TriggerDead()

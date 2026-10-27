@@ -18,7 +18,7 @@ public abstract class DamageReceiver : BaseMonoBehaviour
     public virtual int Deduct(int hp)
     {
         this.CurrentHP -= hp;
-        if(this.IsDead() && !this.isImmotal) 
+        if (this.IsDead() && !this.isImmotal) 
         {
             this.OnDead();
         }
@@ -26,7 +26,7 @@ public abstract class DamageReceiver : BaseMonoBehaviour
         {
             this.OnHurt();
         }
-        if(this.CurrentHP <= 0) this.CurrentHP = 0;
+        if (this.CurrentHP <= 0) this.CurrentHP = 0;
         return this.CurrentHP;
     }
 

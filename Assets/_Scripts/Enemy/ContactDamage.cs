@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ContactDamage : BaseAttack
 {
-    [SerializeField] private int damageContact = 1;
 
     protected void FixedUpdate()
     {
@@ -11,7 +10,7 @@ public class ContactDamage : BaseAttack
 
     public override void Attack()
     {
-        SetDamage(this.damageContact);
+        SetDamage(PigCtrl.Instance.EnemyData.DamageContact);
         AttackBox.BeginAttack();
     }
 
