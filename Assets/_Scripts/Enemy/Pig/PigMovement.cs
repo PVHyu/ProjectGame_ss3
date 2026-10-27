@@ -22,7 +22,7 @@ public class PigMovement : BaseMonoBehaviour
 
     private Collider2D c2d;
 
-    private int direction = 1;
+    private int direction = -1;
     private bool isKnockback;
     private Coroutine knockbackCoroutine;
 
@@ -81,13 +81,13 @@ public class PigMovement : BaseMonoBehaviour
     {
         Debug.Log("TurnAround");
         direction *= -1;
+        PigCtrl.Instance.PigAnimation.SetFacingRight(direction < 0);
     }
 
     private void FacePlayer(Vector2 playerPosition)
     {
         bool playerIsOnRight = playerPosition.x > transform.position.x;
-
-        PigCtrl.Instance.SpriteRenderer.flipX = playerIsOnRight;
+        if ((direction > 0) != playerIsOnRight) TurnAround();
     }
 
     public void Knockback(Vector2 hammerPosition)
