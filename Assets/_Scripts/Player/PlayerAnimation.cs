@@ -47,11 +47,6 @@ public class PlayerAnimation : BaseMonoBehaviour
        PlayerCtrl.Instance.Animator.SetTrigger("isDead");
     }
 
-    public void TriggerLand()
-    {
-        PlayerCtrl.Instance.Animator.SetTrigger("Ground");
-    }
-
     public void TriggerHit()
     {
        PlayerCtrl.Instance.Animator.SetTrigger("isHitted");

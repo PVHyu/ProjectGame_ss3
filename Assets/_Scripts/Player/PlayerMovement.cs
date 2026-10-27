@@ -24,9 +24,10 @@ public class PlayerMovement : BaseMonoBehaviour
 
     public void OnGroundEnter()
     {
-        Debug.Log("Grounded");
         IsGrounded = true;
         IsJumping = false;
+        PlayerCtrl.Instance.PlayerAnimation.SetJumping(false);
+        PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
     }
 
     public void OnGroundExit()
@@ -43,36 +44,40 @@ public class PlayerMovement : BaseMonoBehaviour
     {
         if (!IsGrounded || PlayerCtrl.Instance.PlayerHealth.IsDead()) return;
 
-        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(PlayerCtrl.Instance.Rb2d.linearVelocity.x, 0f);
+        IsGrounded = false;
+        IsJumping = true;
 
+        PlayerCtrl.Instance.Rb2d.linearVelocity = new Vector2(PlayerCtrl.Instance.Rb2d.linearVelocity.x, 0f);
         PlayerCtrl.Instance.Rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-        Debug.Log("Jumping");
-        IsJumping = true;
-        PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
+        PlayerCtrl.Instance.PlayerAnimation.SetJumping(true);
+        PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
     }
 
     private void RequestFall()
     {
-        if(PlayerCtrl.Instance.Rb2d.linearVelocity.y > 0f) return; 
-        if(PlayerCtrl.Instance.Rb2d.linearVelocity.y < 0f)
+        if (IsGrounded)
         {
-            IsJumping = false;
-            PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
+            if (PlayerCtrl.Instance.Rb2d.linearVelocity.y <= 0.1f)
+            {
+                PlayerCtrl.Instance.PlayerAnimation.SetJumping(false);
+                PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
+            }
+            return;
+        }
+
+        float velY = PlayerCtrl.Instance.Rb2d.linearVelocity.y;
+
+        if (velY > 0.1f)
+        {
+            PlayerCtrl.Instance.PlayerAnimation.SetJumping(true);
+            PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
+        }
+        else if (velY < -0.1f)
+        {
+            PlayerCtrl.Instance.PlayerAnimation.SetJumping(false);
             PlayerCtrl.Instance.PlayerAnimation.SetFalling(true);
         }
-        else
-        {
-            RequestGrounded();
-        }
-    }
-
-    private void RequestGrounded()
-    {
-        if(!IsGrounded) return;
-        IsJumping = false;
-        PlayerCtrl.Instance.PlayerAnimation.SetJumping(IsJumping);
-        PlayerCtrl.Instance.PlayerAnimation.SetFalling(false);
     }
 
     private void Move()

@@ -29,7 +29,7 @@ public class PlayerInput : BaseMonoBehaviour
 
     private void HandleAttackInput()
     {
-        if (PlayerCtrl.Instance.PlayerMovement.IsJumping) return;
+        if (!PlayerCtrl.Instance.PlayerMovement.IsGrounded) return; 
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
         PlayerCtrl.Instance.ManagingSkills?.GetSkill("Normal Attack")?.Attack();
