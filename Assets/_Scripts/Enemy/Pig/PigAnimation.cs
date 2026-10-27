@@ -10,7 +10,7 @@ public class PigAnimation : BaseMonoBehaviour
         PigCtrl.Instance.Animator.SetBool("isRunning", value);
     }
 
-    public void SetFacingRight(bool value)
+    public void SetFacingLeft(bool value)
     {
         PigCtrl.Instance.SpriteRenderer.flipX = !value;
     }

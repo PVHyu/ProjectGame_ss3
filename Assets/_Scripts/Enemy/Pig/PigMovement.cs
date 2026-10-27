@@ -1,6 +1,4 @@
-
 using System.Collections;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -8,6 +6,7 @@ public class PigMovement : BaseMonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float turnPauseDuration = 3f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Raycast")]
@@ -15,27 +14,30 @@ public class PigMovement : BaseMonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.5f;
     [SerializeField] private float edgeCheckOffset = 0.05f;
 
-    [Header("Knockback")]
-    [SerializeField] private float knockbackForceX = 2f;
-    [SerializeField] private float knockbackForceY = 2f;
-    [SerializeField] private float knockbackDuration = 1f;
-
     private Collider2D c2d;
+    private EnemyKnockback enemyKnockback;
+    private bool isTurning;
 
     private int direction = -1;
-    private bool isKnockback;
-    private Coroutine knockbackCoroutine;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadBoxCollider2D();
+        this.LoadPigKnockback();
     }
 
     private void FixedUpdate()
     {
-        if (isKnockback) return;
+        if (enemyKnockback.IsKnockback || isTurning) return;
         Move();
+    }
+
+    protected virtual void LoadPigKnockback()
+    {
+        if (this.enemyKnockback != null) return;
+        this.enemyKnockback = GetComponent<EnemyKnockback>();
+        Debug.Log(transform.name + ": Load PigKnockback", gameObject);
     }
 
     protected virtual void LoadBoxCollider2D()
@@ -48,8 +50,28 @@ public class PigMovement : BaseMonoBehaviour
     private void Move()
     {
         if (PigCtrl.Instance.PigHealth.IsDead()) return;
-        if (IsWallAhead() || IsEdgeAhead()) TurnAround();
+        if (IsWallAhead() || IsEdgeAhead())
+        {
+            StartCoroutine(TurnAroundAfterPause());
+            return;
+        }
         PigCtrl.Instance.R2d.linearVelocity = new Vector2(direction * moveSpeed, PigCtrl.Instance.R2d.linearVelocity.y);
+        PigCtrl.Instance.PigAnimation.SetRunning(true);
+    }
+
+    private IEnumerator TurnAroundAfterPause()
+    {
+        isTurning = true;
+
+        PigCtrl.Instance.R2d.linearVelocity = Vector2.zero;
+        PigCtrl.Instance.PigAnimation.SetRunning(false);
+
+        yield return new WaitForSeconds(turnPauseDuration);
+
+        direction *= -1;
+        PigCtrl.Instance.PigAnimation.SetFacingLeft(direction < 0);
+
+        isTurning = false;
     }
 
     private bool IsWallAhead()
@@ -67,13 +89,10 @@ public class PigMovement : BaseMonoBehaviour
     private bool IsEdgeAhead()
     {
         float x = direction > 0 ? c2d.bounds.max.x + edgeCheckOffset : c2d.bounds.min.x - edgeCheckOffset;
-
         Vector2 origin = new Vector2(x, c2d.bounds.min.y);
-
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
 
         Debug.DrawRay(origin, Vector2.down * groundCheckDistance, Color.red);
-
         return hit.collider == null;
     }
 
@@ -81,7 +100,7 @@ public class PigMovement : BaseMonoBehaviour
     {
         Debug.Log("TurnAround");
         direction *= -1;
-        PigCtrl.Instance.PigAnimation.SetFacingRight(direction < 0);
+        PigCtrl.Instance.PigAnimation.SetFacingLeft(direction < 0);
     }
 
     private void FacePlayer(Vector2 playerPosition)
@@ -92,21 +111,7 @@ public class PigMovement : BaseMonoBehaviour
 
     public void Knockback(Vector2 hammerPosition)
     {
-        if (knockbackCoroutine != null) StopCoroutine(knockbackCoroutine);
         FacePlayer(hammerPosition);
-        knockbackCoroutine = StartCoroutine(KnockbackRoutine(hammerPosition));
-    }
-
-    private IEnumerator KnockbackRoutine(Vector2 hammerPosition)
-    {
-        isKnockback = true;
-        float directionX = transform.position.x < hammerPosition.x ? -1f : 1f;
-
-        PigCtrl.Instance.R2d.linearVelocity = new Vector2(directionX * knockbackForceX, knockbackForceY);
-
-        yield return new WaitForSeconds(knockbackDuration);
-
-        isKnockback = false;
-        knockbackCoroutine = null;
+        enemyKnockback.ApplyKnockback(hammerPosition);
     }
 }
