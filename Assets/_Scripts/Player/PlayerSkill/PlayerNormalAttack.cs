@@ -8,6 +8,7 @@ public class PlayerNormalAttack : BaseAttack
 
     public override void Attack()
     {
+        if (!PlayerCtrl.Instance.PlayerAnimation.IsIdle()) return;
         PlayerCtrl.Instance.PlayerAnimation.TriggerAttack();
         SetDamage(normalDamage);
         AttackBox.BeginAttack();
