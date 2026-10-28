@@ -46,14 +46,17 @@ TagManager:
   - name: Background
     uniqueID: 877326185
     locked: 0
-  - name: Layout
-    uniqueID: 1148911111
-    locked: 0
   - name: Decor
     uniqueID: 2893354331
     locked: 0
+  - name: Layout
+    uniqueID: 1148911111
+    locked: 0
   - name: Enemy
     uniqueID: 1059332981
+    locked: 0
+  - name: InterObject
+    uniqueID: 2523815317
     locked: 0
   - name: Player
     uniqueID: 667544621
