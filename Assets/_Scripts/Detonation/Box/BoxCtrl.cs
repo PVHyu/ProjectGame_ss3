@@ -6,7 +6,7 @@ public class BoxCtrl : BaseMonoBehaviour
     public Box Box => box;
     [SerializeField] private Animator animator;
     public Animator Animator => animator;
-    
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
