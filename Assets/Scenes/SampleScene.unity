@@ -736,7 +736,7 @@ Transform:
   m_GameObject: {fileID: 410302403}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.73, y: -1.98, z: 0}
+  m_LocalPosition: {x: 0.73, y: -2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -754,9 +754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fc3ae26649e614796ade010fe0a4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestSpawn
-  effectSpawner: {fileID: 767227327}
-  effectPrefabs: {fileID: 455648524}
-  effect: {fileID: 1675674085}
+  detonationSpawner: {fileID: 384321445}
+  detonation: {fileID: 604205209}
 --- !u!1 &423350624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxCtrl
   box: {fileID: 604205209}
+  animator: {fileID: 1995921960}
 --- !u!1 &704265922
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,10 +4873,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxDespawn
   parent: {fileID: 604205209}
-  spawner: {fileID: 0}
+  spawner: {fileID: 384321445}
   isDespawnByTime: 1
   timeLife: 7
   currentTime: 7
+  effectSpawner: {fileID: 767227327}
+  effect: {fileID: 1675674085}
+  boxCtrl: {fileID: 604205210}
+  timeDelay: 0.2
 --- !u!4 &1803593758
 Transform:
   m_ObjectHideFlags: 0
@@ -5148,6 +5152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1995921958}
   - component: {fileID: 1995921959}
+  - component: {fileID: 1995921960}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -5230,6 +5235,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &1995921960
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995921957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2fa2ac8aeb743d3498833703aa86cea6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2079217680
 GameObject:
   m_ObjectHideFlags: 0

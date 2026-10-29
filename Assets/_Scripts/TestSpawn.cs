@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class TestSpawn : BaseMonoBehaviour
 {
-    [SerializeField] private EffectSpawner effectSpawner;
-    [SerializeField] private EffectPrefabs effectPrefabs;
-    [SerializeField] private Effect effect;
-    public Effect Effect => effect;
+    [SerializeField] private DetonationSpawner detonationSpawner;
+    [SerializeField] private Detonation detonation;
+    public Detonation Detonation => detonation;
 
     protected override void OnEnable()
     {
@@ -18,19 +17,14 @@ public class TestSpawn : BaseMonoBehaviour
         InvokeRepeating(nameof(SpawnBoxPieces), 3f, 3f);
     }
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
-    }
-
     void CheckDetonationSpawner()
     {
-        if(this.effectSpawner == null) Debug.LogWarning("EffectSpawner is null"); 
+        if(this.detonationSpawner == null) Debug.LogError("DetonationSpawner is null"); 
     }
 
     void SpawnBoxPieces()
     {
-        Effect newBoxPieces = effectSpawner.Spawn(this.Effect, this.transform.position);
-        newBoxPieces.gameObject.SetActive(true);
+        Detonation newBox = detonationSpawner.Spawn(this.detonation, this.transform.position);
+        newBox.gameObject.SetActive(true);
     }
 }
