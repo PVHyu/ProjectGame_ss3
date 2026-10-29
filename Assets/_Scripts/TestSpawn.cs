@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class TestSpawn : BaseMonoBehaviour
 {
-    [SerializeField] private DetonationSpawner detonationSpawner;
-    [SerializeField] private Box box;
-    public Box Box => box;
+    [SerializeField] private EffectSpawner effectSpawner;
+    [SerializeField] private EffectPrefabs effectPrefabs;
+    [SerializeField] private Effect effect;
+    public Effect Effect => effect;
 
     protected override void OnEnable()
     {
         this.CheckDetonationSpawner();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        InvokeRepeating(nameof(SpawnBoxPieces), 3f, 3f);
     }
 
     protected override void LoadComponents()
@@ -18,17 +25,12 @@ public class TestSpawn : BaseMonoBehaviour
 
     void CheckDetonationSpawner()
     {
-        if(this.detonationSpawner == null) Debug.LogWarning("DetonationSpawner is null"); 
+        if(this.effectSpawner == null) Debug.LogWarning("EffectSpawner is null"); 
     }
 
-    protected virtual void LoadBox()
+    void SpawnBoxPieces()
     {
-        if(this.box != null) return;
-        // this.box = this.bulletPrefabs.GetByName(this.bulletName);
-    }
-
-    void SpawnBox()
-    {
-        // Box newBox = DetonationSpawner.Spawn(this., this.transform.position);
+        Effect newBoxPieces = effectSpawner.Spawn(this.Effect, this.transform.position);
+        newBoxPieces.gameObject.SetActive(true);
     }
 }
