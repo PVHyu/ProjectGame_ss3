@@ -719,8 +719,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 409688820}
-  - component: {fileID: 409688822}
   - component: {fileID: 409688821}
+  - component: {fileID: 409688822}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -805,6 +805,7 @@ MonoBehaviour:
   boxCollider2D: {fileID: 409688821}
   attackBoxDuration: 0.1
   attackDelay: 1
+  boxCtrl: {fileID: 604205210}
 --- !u!1 &410302403
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &410302404
 Transform:
   m_ObjectHideFlags: 0
@@ -868,7 +869,7 @@ MonoBehaviour:
   detonation: {fileID: 604205209}
   startPoint: {fileID: 533022074}
   endPoint: {fileID: 423350625}
-  angle: 180
+  angle: 45
   gravity: 10
   trajectoryStep: 0.1
   trajectoryPoints: 100
@@ -1255,6 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoxCtrl
   box: {fileID: 604205209}
   animator: {fileID: 1995921960}
+  boxDespawn: {fileID: 1803593757}
 --- !u!50 &604205211
 Rigidbody2D:
   serializedVersion: 5
@@ -5211,7 +5213,7 @@ MonoBehaviour:
   effectSpawner: {fileID: 767227327}
   effect: {fileID: 1675674085}
   boxCtrl: {fileID: 604205210}
-  timeDelay: 0.2
+  timeDelay: 0.1
 --- !u!4 &1803593758
 Transform:
   m_ObjectHideFlags: 0

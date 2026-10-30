@@ -6,12 +6,15 @@ public class BoxCtrl : BaseMonoBehaviour
     public Box Box => box;
     [SerializeField] private Animator animator;
     public Animator Animator => animator;
+    [SerializeField] private BoxDespawn boxDespawn;
+    public BoxDespawn BoxDespawn => boxDespawn;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadBox();
         this.LoadAnimator();
+        this.LoadDespawn();
     }
 
     protected virtual void LoadBox()
@@ -25,6 +28,13 @@ public class BoxCtrl : BaseMonoBehaviour
     {
         if(this.animator != null) return;
         this.animator = GetComponentInChildren<Animator>();
+        Debug.Log(transform.name + ": Load Animator", gameObject);
+    }
+
+    protected virtual void LoadDespawn()
+    {
+        if(this.boxDespawn != null) return;
+        this.boxDespawn = GetComponentInChildren<BoxDespawn>();
         Debug.Log(transform.name + ": Load Animator", gameObject);
     }
 }
