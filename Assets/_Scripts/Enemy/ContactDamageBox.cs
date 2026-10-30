@@ -7,8 +7,8 @@ public class ContactDamageBox : AttackBox
 
     public override void BeginAttack()
     {
-        if (this.collider == null) return;
-        this.collider.enabled = true;
+        if (this.circleCollider2D == null) return;
+        this.circleCollider2D.enabled = true;
     }
 
     public override void EndAttack() {}

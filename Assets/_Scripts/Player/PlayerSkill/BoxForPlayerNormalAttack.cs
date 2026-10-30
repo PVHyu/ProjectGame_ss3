@@ -7,31 +7,31 @@ public class BoxForPlayerNormalAttack : AttackBox
 
     void FixedUpdate()
     {
-        this.CounterAttack();
+        this.CounterAttackBox();
     }
 
     public override void BeginAttack()
     {
         hitEnemies.Clear();
-        if (this.collider == null) return;
+        if (this.circleCollider2D == null) return;
 
         if (PlayerCtrl.Instance.PlayerAnimation.IsFlipped) {
-            this.collider.offset = new Vector2(-Mathf.Abs(this.collider.offset.x), this.collider.offset.y);
-            this.collider.enabled = true;
+            this.circleCollider2D.offset = new Vector2(-Mathf.Abs(this.circleCollider2D.offset.x), this.circleCollider2D.offset.y);
+            this.circleCollider2D.enabled = true;
         } else {
-            this.collider.offset = new Vector2(Mathf.Abs(this.collider.offset.x), this.collider.offset.y);
-            this.collider.enabled = true;
+            this.circleCollider2D.offset = new Vector2(Mathf.Abs(this.circleCollider2D.offset.x), this.circleCollider2D.offset.y);
+            this.circleCollider2D.enabled = true;
         }
     }
 
     public override void EndAttack()
     {
-        if (this.collider != null) this.collider.enabled = false;
+        if (this.circleCollider2D != null) this.circleCollider2D.enabled = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (this.collider == null || !this.collider.enabled) return;
+        if (this.circleCollider2D == null || !this.circleCollider2D.enabled) return;
         if (!hitEnemies.Add(other.GetComponent<PigHealth>())) return;
 
         base.OnTriggerEnter2D(other);

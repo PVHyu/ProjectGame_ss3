@@ -7,14 +7,15 @@ public class NormalAttackBox : AttackBox
 
     public override void BeginAttack()
     {
-        if (this.collider == null) return;
+        if (this.circleCollider2D == null) return;
 
-        if (PigCtrl.Instance.PigAnimation.IsFlipped) {
-            this.collider.offset = new Vector2(Mathf.Abs(this.collider.offset.x), this.collider.offset.y);
-            this.collider.enabled = true;
+        if (PigCtrl.Instance.PigAnimation.IsFlipped) 
+        {
+            this.circleCollider2D.offset = new Vector2(Mathf.Abs(this.circleCollider2D.offset.x), this.circleCollider2D.offset.y);
+            this.circleCollider2D.enabled = true;
         } else {
-            this.collider.offset = new Vector2(-Mathf.Abs(this.collider.offset.x), this.collider.offset.y);
-            this.collider.enabled = true;
+            this.circleCollider2D.offset = new Vector2(-Mathf.Abs(this.circleCollider2D.offset.x), this.circleCollider2D.offset.y);
+            this.circleCollider2D.enabled = true;
         }
 
         if (!waitAttack)
@@ -27,8 +28,8 @@ public class NormalAttackBox : AttackBox
 
     public override void EndAttack() 
     {
-        if (this.collider == null) return;
-        this.collider.enabled = false;
+        if (this.circleCollider2D == null) return;
+        this.circleCollider2D.enabled = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

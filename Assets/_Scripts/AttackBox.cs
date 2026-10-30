@@ -4,7 +4,7 @@ using System.Collections;
 
 public abstract class AttackBox : DamageSender
 {
-    [SerializeField] private float attackDuration = 0.1f;
+    [SerializeField] private float attackBoxDuration = 0.1f;
     [SerializeField] private float attackDelay = 1f;
 
     private float attackTimer = 0f;
@@ -12,14 +12,14 @@ public abstract class AttackBox : DamageSender
 
     void FixedUpdate()
     {
-        this.CounterAttack();
+        this.CounterAttackBox();
     }
     
-    protected virtual void CounterAttack()
+    protected virtual void CounterAttackBox()
     {
-        if (this.collider == null || !this.collider.enabled) return;
+        if (this.circleCollider2D == null || !this.circleCollider2D.enabled) return;
         this.attackTimer += Time.fixedDeltaTime;
-        if (this.attackTimer >= this.attackDuration)
+        if (this.attackTimer >= this.attackBoxDuration)
         {
             this.EndAttack();
             this.attackTimer = 0f;
