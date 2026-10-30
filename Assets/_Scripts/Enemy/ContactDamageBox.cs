@@ -13,11 +13,11 @@ public class ContactDamageBox : AttackBox
 
     public override void EndAttack() {}
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name == "PigHealth") return;
 
-        damageReceiver = other.GetComponent<DamageReceiver>();
+        damageReceiver = other.collider.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
 
         this.Send(damageReceiver);

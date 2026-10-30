@@ -822,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410302404
 Transform:
   m_ObjectHideFlags: 0
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf631fe42addfa45b7043933a4bbfb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxForPlayerNormalAttack
-  circleCollider2D: {fileID: 0}
+  circleCollider2D: {fileID: 1182757284}
   boxCollider2D: {fileID: 0}
   attackBoxDuration: 0.1
   attackDelay: 1
