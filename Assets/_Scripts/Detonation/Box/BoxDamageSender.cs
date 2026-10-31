@@ -29,6 +29,7 @@ public class BoxDamageSender : AttackBox
 
     protected override void OnCollisionEnter2D(Collision2D other)
     {
+        if (!other.gameObject.CompareTag("Player")) return; 
         boxCtrl.BoxDespawn.DoDespawn();
 
         if (!other.gameObject.CompareTag("Player")) return;
