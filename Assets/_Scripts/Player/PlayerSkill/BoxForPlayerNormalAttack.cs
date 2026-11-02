@@ -29,14 +29,14 @@ public class BoxForPlayerNormalAttack : AttackBox
         if (this.circleCollider2D != null) this.circleCollider2D.enabled = false;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (this.circleCollider2D == null || !this.circleCollider2D.enabled) return;
-        if (!hitEnemies.Add(other.GetComponent<PigHealth>())) return;
+        if (!hitEnemies.Add(collision.GetComponent<PigHealth>())) return;
 
-        base.OnTriggerEnter2D(other);
+        base.OnTriggerEnter2D(collision);
 
-        if (PigCtrl.Instance.PigMovement != null && other.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
             PigCtrl.Instance.PigMovement.Knockback(transform.position);
         
     }

@@ -5765,7 +5765,7 @@ Transform:
   m_GameObject: {fileID: 5081281377104591979}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -1.86, z: 0}
+  m_LocalPosition: {x: 0.867, y: -2.027, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5790,7 +5790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ManagingSkills
   skills:
   - {fileID: 7124914743162074959}
-  - {fileID: 0}
+  - {fileID: 9011241751680178592}
 --- !u!4 &1015737809546636235
 Transform:
   m_ObjectHideFlags: 0
@@ -5910,24 +5910,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 443630246908899748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2117744012307100935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4198444208804798872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d19254cbd7223647b4ac22ee09c1199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySensor
-  c2d: {fileID: 3633214550754327176}
-  checkDistance: 0.3
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  enemyMovement: {fileID: 3883121881417499908}
 --- !u!4 &2171400213433769388
 Transform:
   m_ObjectHideFlags: 0
@@ -6055,8 +6037,66 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   attackBoxDuration: 0.1
   attackDelay: 1
---- !u!61 &3633214550754327176
-BoxCollider2D:
+--- !u!114 &3883121881417499908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732223931039256066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigMovement
+  moveSpeed: 0
+  turnPauseDuration: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallCheckDistance: 0.5
+  groundCheckDistance: 0.5
+  edgeCheckOffset: 0.05
+--- !u!1 &4198444208804798872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015737809546636235}
+  - component: {fileID: 726251832762563797}
+  - component: {fileID: 4198444208804798874}
+  - component: {fileID: 4198444208804798873}
+  m_Layer: 0
+  m_Name: PigSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4198444208804798873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198444208804798872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e9f84bd9dc1f04ca64ee537953ebcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackArea
+  c2d: {fileID: 4198444208804798874}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!58 &4198444208804798874
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6089,57 +6129,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03, y: -0.05}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.36, y: 0.5}
-  m_EdgeRadius: 0
---- !u!114 &3883121881417499908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8732223931039256066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PigMovement
-  moveSpeed: 0
-  turnPauseDuration: 3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  wallCheckDistance: 0.5
-  groundCheckDistance: 0.5
-  edgeCheckOffset: 0.05
---- !u!1 &4198444208804798872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1015737809546636235}
-  - component: {fileID: 726251832762563797}
-  - component: {fileID: 3633214550754327176}
-  - component: {fileID: 2117744012307100935}
-  m_Layer: 0
-  m_Name: PigSkills
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2.5
 --- !u!212 &4649451666221424641
 SpriteRenderer:
   serializedVersion: 3
@@ -6304,7 +6295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 443630246908899748}
   - component: {fileID: 6790451963127027010}
-  - component: {fileID: 6065976679858640329}
+  - component: {fileID: 6790451963127027011}
   m_Layer: 0
   m_Name: PigThrowBox
   m_TagString: Enemy
@@ -6327,26 +6318,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 443630246908899748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6065976679858640329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5081281377104591979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bc17b1aae45d694db820add611e63d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PigCtrl
-  pigMovement: {fileID: 3883121881417499908}
-  r2d: {fileID: 6790451963127027010}
-  spriteRenderer: {fileID: 4649451666221424641}
-  animator: {fileID: 8632154027705963913}
-  pigAnimation: {fileID: 4788185709474907619}
-  managingSkills: {fileID: 726251832762563797}
-  pigHealth: {fileID: 6151514173912115055}
-  enemyData: {fileID: 11400000, guid: 8458fda6825bd3c45a55e6237605bd68, type: 2}
 --- !u!114 &6151514173912115055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6387,6 +6358,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6790451963127027011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081281377104591979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99877a5d149c2b3409d343364f5cf27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PigThrowBoxCtrl
+  pigMovement: {fileID: 0}
+  r2d: {fileID: 6790451963127027010}
+  spriteRenderer: {fileID: 4649451666221424641}
+  animator: {fileID: 8632154027705963913}
+  pigAnimation: {fileID: 4788185709474907619}
+  managingSkills: {fileID: 726251832762563797}
+  pigHealth: {fileID: 6151514173912115055}
+  enemyData: {fileID: 11400000, guid: 56d884fc44f272b4da98b0388a1019c1, type: 2}
 --- !u!114 &7124914743162074959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6470,7 +6461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9011241751680178591
 Transform:
   m_ObjectHideFlags: 0
@@ -6493,20 +6484,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2691720039366343154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eff612707cdea649a4bf5c0456a0fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 26207912cb2d7ef4f84bc705d621f665, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestSpawnCopy
-  detonationSpawner: {fileID: 384321445}
-  detonation: {fileID: 604205209}
-  startPoint: {fileID: 9011241751680178591}
-  endPoint: {fileID: 423350625}
-  angle: 225
-  gravity: 10
-  trajectoryStep: 0.1
-  trajectoryPoints: 100
-  spawnInterval: 3
+  m_EditorClassIdentifier: Assembly-CSharp::ThrowBoxAttack
+  attackBox: {fileID: 0}
+  enemySensor: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

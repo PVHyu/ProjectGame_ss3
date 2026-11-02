@@ -7,7 +7,7 @@ public class PigNormalAttack : BaseAttack
     [SerializeField] private EnemySensor enemySensor;
     public EnemySensor EnemySensor => enemySensor;
 
-    void Update()
+    void FixedUpdate()
     {
         this.Attack();
     }
@@ -33,10 +33,5 @@ public class PigNormalAttack : BaseAttack
         Debug.Log("Detected Player");
         SetDamage(PigCtrl.Instance.EnemyData.DamageSkill);
         AttackBox.BeginAttack();
-    }
-
-    protected override void SetDamage(int normalDamage)
-    {
-      this.AttackBox.Damage = normalDamage;
     }
 }

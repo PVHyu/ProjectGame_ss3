@@ -27,14 +27,14 @@ public class BoxDamageSender : AttackBox
 
     public override void EndAttack() {}
 
-    protected override void OnCollisionEnter2D(Collision2D other)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!other.gameObject.CompareTag("Player")) return; 
+        if (collision.gameObject.CompareTag("Enemy")) return; 
         boxCtrl.BoxDespawn.DoDespawn();
 
-        if (!other.gameObject.CompareTag("Player")) return;
+        // if (!collision.gameObject.CompareTag("Player")) return;
 
-        damageReceiver = other.collider.GetComponent<DamageReceiver>();
+        damageReceiver = collision.collider.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
 
         this.Send(damageReceiver);

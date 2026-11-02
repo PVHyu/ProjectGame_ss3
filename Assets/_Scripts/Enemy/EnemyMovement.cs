@@ -65,12 +65,12 @@ public abstract class EnemyMovement : BaseMonoBehaviour
 
     protected bool IsWallAhead()
     {
-        Vector2 origin = new Vector2(direction > 0 ? c2d.bounds.max.x : c2d.bounds.min.x, c2d.bounds.center.y);
+        Vector2 rayOrigin = new Vector2(direction > 0 ? c2d.bounds.max.x : c2d.bounds.min.x, c2d.bounds.center.y);
         Vector2 rayDirection = direction > 0 ? Vector2.right : Vector2.left;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, wallCheckDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, wallCheckDistance, groundLayer);
 
-        Debug.DrawRay(origin, rayDirection * wallCheckDistance, Color.yellow);
+        Debug.DrawRay(rayOrigin, rayDirection * wallCheckDistance, Color.yellow);
 
         return hit.collider != null;
     }
@@ -78,10 +78,10 @@ public abstract class EnemyMovement : BaseMonoBehaviour
     protected bool IsEdgeAhead()
     {
         float x = direction > 0 ? c2d.bounds.max.x + edgeCheckOffset : c2d.bounds.min.x - edgeCheckOffset;
-        Vector2 origin = new Vector2(x, c2d.bounds.min.y);
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
+        Vector2 rayOrigin = new Vector2(x, c2d.bounds.min.y);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, groundCheckDistance, groundLayer);
 
-        Debug.DrawRay(origin, Vector2.down * groundCheckDistance, Color.red);
+        Debug.DrawRay(rayOrigin, Vector2.down * groundCheckDistance, Color.red);
         return hit.collider == null;
     }
 

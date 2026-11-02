@@ -31,12 +31,12 @@ public class EnemySensor : BaseMonoBehaviour
 
     public bool IsDetectPlayer()
     {
-        Vector2 origin = new Vector2(enemyMovement.Direction > 0 ? c2d.bounds.max.x : c2d.bounds.min.x, c2d.bounds.center.y);
+        Vector2 rayOrigin = new Vector2(enemyMovement.Direction > 0 ? c2d.bounds.max.x : c2d.bounds.min.x, c2d.bounds.center.y);
         Vector2 rayDirection = enemyMovement.Direction > 0 ? Vector2.right : Vector2.left;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, checkDistance, playerLayer);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, checkDistance, playerLayer);
 
-        Debug.DrawRay(origin, rayDirection * checkDistance, Color.green);
+        Debug.DrawRay(rayOrigin, rayDirection * checkDistance, Color.green);
 
         return hit.collider != null;
     }

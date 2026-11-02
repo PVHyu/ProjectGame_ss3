@@ -22,5 +22,8 @@ public abstract class BaseAttack : BaseMonoBehaviour
 
    public abstract void Attack();
 
-   protected abstract void SetDamage(int damage);
+   protected virtual void SetDamage(int damage)
+   {
+      this.AttackBox.Damage = damage;
+   }
 }

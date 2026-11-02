@@ -10,7 +10,7 @@ public class ContactDamage : BaseAttack
 
     public override void Attack()
     {
-        SetDamage(PigCtrl.Instance.EnemyData.DamageContact);
+        SetDamage(PigThrowBoxCtrl.Instance.EnemyData.DamageContact);
         AttackBox.BeginAttack();
     }
 

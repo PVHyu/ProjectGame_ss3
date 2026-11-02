@@ -42,7 +42,7 @@ public class PigCtrl : SingletonPattern<PigCtrl>
     {
         if (this.pigHealth != null) return;
         this.pigHealth = GetComponentInChildren<PigHealth>();
-        Debug.Log(transform.name + ": Load Player Health", gameObject);
+        Debug.Log(transform.name + ": Load Pig Health", gameObject);
     }
 
     protected virtual void LoadRigidbody2D()
@@ -77,7 +77,7 @@ public class PigCtrl : SingletonPattern<PigCtrl>
     {
         if (this.managingSkills != null) return;
         this.managingSkills = GetComponentInChildren<ManagingSkills>();
-        Debug.Log(transform.name + ": Load Player Skills", gameObject);
+        Debug.Log(transform.name + ": Load Pig Skills", gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
