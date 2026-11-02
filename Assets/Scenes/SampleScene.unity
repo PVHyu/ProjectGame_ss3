@@ -873,7 +873,6 @@ MonoBehaviour:
   gravity: 10
   trajectoryStep: 0.1
   trajectoryPoints: 100
-  spawnInterval: 3
 --- !u!1 &423350624
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,7 +5789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ManagingSkills
   skills:
   - {fileID: 7124914743162074959}
-  - {fileID: 9011241751680178592}
+  - {fileID: 0}
 --- !u!4 &1015737809546636235
 Transform:
   m_ObjectHideFlags: 0
@@ -5981,6 +5980,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6065976679119434470, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5995,6 +5998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9011241751680178591}
+  - component: {fileID: 9011241751680178593}
   - component: {fileID: 9011241751680178592}
   m_Layer: 0
   m_Name: ThrowingBox
@@ -6089,12 +6093,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackArea
   c2d: {fileID: 4198444208804798874}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerLayer: Player
 --- !u!58 &4198444208804798874
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6130,7 +6132,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2.5
+  m_Radius: 4.18
 --- !u!212 &4649451666221424641
 SpriteRenderer:
   serializedVersion: 3
@@ -6484,13 +6486,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2691720039366343154}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26207912cb2d7ef4f84bc705d621f665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThrowBoxAttack
   attackBox: {fileID: 0}
-  enemySensor: {fileID: 0}
+  attackArea: {fileID: 4198444208804798873}
+  throwingBox: {fileID: 9011241751680178593}
+  attackCooldown: 4
+--- !u!114 &9011241751680178593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691720039366343154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eff612707cdea649a4bf5c0456a0fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThrowingBox
+  detonationSpawner: {fileID: 384321445}
+  detonation: {fileID: 604205209}
+  startPoint: {fileID: 9011241751680178591}
+  endPoint: {fileID: 423350625}
+  angle: 30
+  gravity: 10
+  trajectoryStep: 0.1
+  trajectoryPoints: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
