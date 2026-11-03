@@ -15,7 +15,6 @@ public abstract class BaseAttack : BaseMonoBehaviour
    protected virtual void LoadAttackHitbox()
    {
       if (attackBox != null) return;
-
       attackBox = GetComponent<AttackBox>();
       Debug.Log(transform.name + ": LoadAttackBox", gameObject);
    }

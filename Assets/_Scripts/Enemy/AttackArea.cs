@@ -35,19 +35,14 @@ public class AttackArea : BaseMonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(playerLayer))
-        {
+        if (collision.gameObject.layer == LayerMask.NameToLayer(playerLayer)) 
             targetPlayer = collision.transform;
-            Debug.Log("Player entered attack area: " + targetPlayer.name);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform == targetPlayer)
-        {
             targetPlayer = null;
-        }
     }
 
     public bool IsDetectPlayer()

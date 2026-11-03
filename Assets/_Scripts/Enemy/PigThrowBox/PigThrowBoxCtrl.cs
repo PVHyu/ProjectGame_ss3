@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class PigThrowBoxCtrl : SingletonPattern<PigThrowBoxCtrl>
 {
-    [SerializeField] private PigMovement pigMovement;
-    public PigMovement PigMovement => pigMovement;
+    [SerializeField] private PigThrowBoxMovement pigThrowBoxMovement;
+    public PigThrowBoxMovement PigThrowBoxMovement => pigThrowBoxMovement;
     [SerializeField] private Rigidbody2D r2d;
     public Rigidbody2D R2d => r2d;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
     [SerializeField] private Animator animator;
     public Animator Animator => animator;
-    [SerializeField] private PigAnimation pigAnimation;
-    public PigAnimation PigAnimation => pigAnimation;
+    [SerializeField] private PigThrowBoxAnimation pigThrowBoxAnimation;
+    public PigThrowBoxAnimation PigThrowBoxAnimation => pigThrowBoxAnimation;
     [SerializeField] private ManagingSkills managingSkills;
     public ManagingSkills ManagingSkills => managingSkills;
-    [SerializeField] private PigHealth pigHealth;
-    public PigHealth PigHealth => pigHealth;
+    [SerializeField] private PigThrowBoxHealth pigThrowBoxHealth;
+    public PigThrowBoxHealth PigThrowBoxHealth => pigThrowBoxHealth;
     [SerializeField] private EnemyData enemyData;
     public EnemyData EnemyData => enemyData;
 
@@ -33,16 +33,16 @@ public class PigThrowBoxCtrl : SingletonPattern<PigThrowBoxCtrl>
 
     protected virtual void LoadPigMovement()
     {
-        if (this.pigMovement != null) return;
-        this.pigMovement = GetComponentInChildren<PigMovement>();
-        Debug.Log(transform.name + ": Load Pig Movement", gameObject);
+        if (this.pigThrowBoxMovement != null) return;
+        this.pigThrowBoxMovement = GetComponentInChildren<PigThrowBoxMovement>();
+        Debug.Log(transform.name + ": Load Pig Throw Box Movement", gameObject);
     }
 
     protected virtual void LoadPigHealth()
     {
-        if (this.pigHealth != null) return;
-        this.pigHealth = GetComponentInChildren<PigHealth>();
-        Debug.Log(transform.name + ": Load Pig Health", gameObject);
+        if (this.pigThrowBoxHealth != null) return;
+        this.pigThrowBoxHealth = GetComponentInChildren<PigThrowBoxHealth>();
+        Debug.Log(transform.name + ": Load Pig Throw Box Health", gameObject);
     }
 
     protected virtual void LoadRigidbody2D()
@@ -68,8 +68,8 @@ public class PigThrowBoxCtrl : SingletonPattern<PigThrowBoxCtrl>
 
     protected virtual void LoadPigAnimation()
     {
-        if (this.pigAnimation != null) return;
-        this.pigAnimation = GetComponentInChildren<PigAnimation>();
+        if (this.pigThrowBoxAnimation != null) return;
+        this.pigThrowBoxAnimation = GetComponentInChildren<PigThrowBoxAnimation>();
         Debug.Log(transform.name + ": Load Pig Animation", gameObject);
     }
 
@@ -78,21 +78,5 @@ public class PigThrowBoxCtrl : SingletonPattern<PigThrowBoxCtrl>
         if (this.managingSkills != null) return;
         this.managingSkills = GetComponentInChildren<ManagingSkills>();
         Debug.Log(transform.name + ": Load Pig Skills", gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            // this.pigMovement.OnGroundEnter();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            // this.pigMovement.OnGroundExit();
-        }
     }
 }

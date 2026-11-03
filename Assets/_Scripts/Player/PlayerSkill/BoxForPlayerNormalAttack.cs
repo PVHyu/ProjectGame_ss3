@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BoxForPlayerNormalAttack : AttackBox
 {
-    private readonly HashSet<PigHealth> hitEnemies = new();
+    private readonly HashSet<DamageReceiver> hitEnemies = new();
 
     void FixedUpdate()
     {
@@ -31,13 +31,16 @@ public class BoxForPlayerNormalAttack : AttackBox
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.circleCollider2D == null || !this.circleCollider2D.enabled) return;
-        if (!hitEnemies.Add(collision.GetComponent<PigHealth>())) return;
+        if (circleCollider2D == null || !circleCollider2D.enabled) return;
+        if (!collision.CompareTag("Enemy")) return;
+
+        var damageReceiver = collision.GetComponent<DamageReceiver>();
+        if (damageReceiver == null || !hitEnemies.Add(damageReceiver)) return;
 
         base.OnTriggerEnter2D(collision);
 
-        if (collision.gameObject.CompareTag("Enemy"))
-            PigCtrl.Instance.PigMovement.Knockback(transform.position);
+        var enemyMovement = collision.GetComponentInParent<EnemyMovement>();
+        enemyMovement?.Knockback(transform.position);
         
     }
 }

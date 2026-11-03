@@ -98,11 +98,12 @@ public abstract class EnemyMovement : BaseMonoBehaviour
         if ((direction > 0) != playerIsOnRight) TurnAround();
     }
 
-    public void Knockback(Vector2 hammerPosition)
+    public virtual void Knockback(Vector2 hammerPosition)
     {
         FacePlayer(hammerPosition);
         enemyKnockback.ApplyKnockback(hammerPosition);
     }
     
+
     public abstract void Move();
 }

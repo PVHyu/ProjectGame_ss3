@@ -5,7 +5,6 @@ public class ThrowBoxAttack : BaseAttack
 {   
     [SerializeField] private AttackArea attackArea;
     public AttackArea AttackArea => attackArea;
-
     [SerializeField] private ThrowingBox throwingBox;
     public ThrowingBox ThrowingBox => throwingBox;
 
@@ -13,7 +12,7 @@ public class ThrowBoxAttack : BaseAttack
     [SerializeField] private float attackCooldown = 3f;
     private bool isAttacking = false;
 
-    private void FixedUpdate()
+    private void Update()
     {
         this.Attack();
     }
@@ -41,17 +40,21 @@ public class ThrowBoxAttack : BaseAttack
 
     public override void Attack()
     {
-        if (!this.attackArea.IsDetectPlayer()) return;
+        if (!this.attackArea.IsDetectPlayer() || isAttacking) return;
 
-        if (isAttacking) return;
-        StartCoroutine(AttackCooldownCoroutine());
-      
-        if (this.throwingBox != null) this.throwingBox.Throw(this.attackArea.TargetPlayer);
+        StartCoroutine(AttackRoutine());
     }
 
-    IEnumerator AttackCooldownCoroutine()
+    private IEnumerator AttackRoutine()
     {
         isAttacking = true;
+        PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.TriggerAttack();
+
+        yield return new WaitUntil(() => PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => !PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        
+        this.throwingBox.Throw(this.attackArea.TargetPlayer);
+
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
     }
