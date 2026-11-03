@@ -47,11 +47,12 @@ public class AttackArea : BaseMonoBehaviour
 
     public bool IsDetectPlayer()
     {
+        Debug.Log("Target Player: " + (targetPlayer != null ? targetPlayer.name : "None"));
         if (targetPlayer == null) return false;
 
         Vector2 rayOrigin = pigThrowBoxCtrl.transform.position;
         Vector2 targetPos = targetPlayer.position;
-
+        Debug.Log("Checking if player is detectable...");
         RaycastHit2D hitObstacle = Physics2D.Linecast(rayOrigin, targetPos, obstacleLayer);
 
         bool canSeePlayer = (hitObstacle.collider == null);

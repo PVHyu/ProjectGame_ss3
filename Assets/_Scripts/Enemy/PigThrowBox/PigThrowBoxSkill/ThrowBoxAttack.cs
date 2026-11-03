@@ -41,7 +41,7 @@ public class ThrowBoxAttack : BaseAttack
     public override void Attack()
     {
         if (!this.attackArea.IsDetectPlayer() || isAttacking) return;
-
+        Debug.Log("Attack is " + (isAttacking ? "in progress" : "ready"));
         StartCoroutine(AttackRoutine());
     }
 
