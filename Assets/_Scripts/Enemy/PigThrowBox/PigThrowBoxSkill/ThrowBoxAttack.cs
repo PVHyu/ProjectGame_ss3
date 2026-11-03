@@ -14,7 +14,7 @@ public class ThrowBoxAttack : BaseAttack
 
     private void Update()
     {
-        this.Attack();
+        if (!PigThrowBoxCtrl.Instance.PigThrowBoxHealth.IsDead()) this.Attack();
     }
 
     protected override void LoadComponents()

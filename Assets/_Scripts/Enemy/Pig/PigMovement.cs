@@ -4,6 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PigMovement : EnemyMovement
 {
+    protected override void SetRunning(bool value)
+    {
+        PigCtrl.Instance.PigAnimation.SetRunning(value);
+    }
+
     public override void Move()
     {
         if (PigCtrl.Instance.PigHealth.IsDead()) return;
@@ -13,7 +18,7 @@ public class PigMovement : EnemyMovement
             return;
         }
         PigCtrl.Instance.R2d.linearVelocity = new Vector2(Direction * MoveSpeed, PigCtrl.Instance.R2d.linearVelocity.y);
-        PigCtrl.Instance.PigAnimation.SetRunning(true);
+        SetRunning(true);
     }
 
 }

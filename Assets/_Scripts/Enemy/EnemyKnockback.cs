@@ -9,8 +9,15 @@ public class EnemyKnockback : BaseMonoBehaviour
     [SerializeField] private float knockbackDuration = 1f;
 
     private Coroutine knockbackCoroutine;
+    private Rigidbody2D r2d;
 
     public bool IsKnockback { get; private set; }
+
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        if (r2d == null) r2d = GetComponentInParent<Rigidbody2D>();
+    }
 
     public void ApplyKnockback(Vector2 sourcePosition)
     {
@@ -23,7 +30,14 @@ public class EnemyKnockback : BaseMonoBehaviour
         IsKnockback = true;
         float directionX = transform.position.x < sourcePosition.x ? -1f : 1f;
 
-        PigCtrl.Instance.R2d.linearVelocity = new Vector2(
+        if (r2d == null)
+        {
+            Debug.LogError("Rigidbody2D not found on this enemy or its parents.", gameObject);
+            IsKnockback = false;
+            yield break;
+        }
+
+        r2d.linearVelocity = new Vector2(
             directionX * knockbackForceX,
             knockbackForceY
         );

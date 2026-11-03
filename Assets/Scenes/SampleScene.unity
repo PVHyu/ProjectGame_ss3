@@ -1705,6 +1705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b17c4bbf72f7b4409df5eb5e8ded08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolHolder
+--- !u!50 &978887180 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6790451962261992045, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+  m_PrefabInstance: {fileID: 2503369401204998767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1013283831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,6 +5223,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604205208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1849808396 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5003540913296410417, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+  m_PrefabInstance: {fileID: 2503369401204998767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889727089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,6 +5261,11 @@ Transform:
   - {fileID: 443630246908899748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1905085632 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4649451666952242990, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+  m_PrefabInstance: {fileID: 2503369401204998767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1955155615
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,6 +5807,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: c2d
+      value: 
+      objectReference: {fileID: 1849808396}
+    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: r2d
+      value: 
+      objectReference: {fileID: 978887180}
+    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1905085632}
+    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4198444207534999223, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -5814,7 +5845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5081281377845959492, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6065976679119434470, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
       propertyPath: m_Enabled
@@ -5877,6 +5908,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5039127921554488813, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7296686520327195714, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: endPoint
       value: 
@@ -5897,6 +5932,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7794823496630614251, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1905085632}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -27,11 +27,12 @@ public class PigThrowBoxAnimation : BaseMonoBehaviour
 
     public void TriggerDead()
     {
-       PigThrowBoxCtrl.Instance.Animator.SetTrigger("isDead");
+        Debug.Log(transform.name + ": TriggerDead", gameObject);
+        PigThrowBoxCtrl.Instance.Animator.SetTrigger("isDead");
     }
 
     public void TriggerHit()
     {
-       PigThrowBoxCtrl.Instance.Animator.SetTrigger("isHitted");
+        PigThrowBoxCtrl.Instance.Animator.SetTrigger("isHitted");
     }
 }

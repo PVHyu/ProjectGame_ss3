@@ -34,13 +34,12 @@ public class BoxForPlayerNormalAttack : AttackBox
         if (circleCollider2D == null || !circleCollider2D.enabled) return;
         if (!collision.CompareTag("Enemy")) return;
 
-        var damageReceiver = collision.GetComponent<DamageReceiver>();
+        DamageReceiver damageReceiver = collision.GetComponent<DamageReceiver>();
         if (damageReceiver == null || !hitEnemies.Add(damageReceiver)) return;
 
         base.OnTriggerEnter2D(collision);
 
-        var enemyMovement = collision.GetComponentInParent<EnemyMovement>();
-        enemyMovement?.Knockback(transform.position);
-        
+        EnemyMovement enemyMovement = collision.transform.root.GetComponentInChildren<EnemyMovement>();
+        enemyMovement?.Knockback(transform.position);        
     }
 }
