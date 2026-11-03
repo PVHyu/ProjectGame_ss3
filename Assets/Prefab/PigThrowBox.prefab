@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3290128780853707680}
   - component: {fileID: 4978593404939032883}
   - component: {fileID: 2065340404609289745}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PigSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8170151076136827147}
   - component: {fileID: 7292322563927801484}
   - component: {fileID: 3085352788645356851}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ContactDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 7212097622135827231}
   - component: {fileID: 7296686520327195714}
   - component: {fileID: 4727056547160451933}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ThrowingBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2334245961342980712
 Transform:
   m_ObjectHideFlags: 0
@@ -595,7 +595,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7751210554410804688}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -696,7 +696,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

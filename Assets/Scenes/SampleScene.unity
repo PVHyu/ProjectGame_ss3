@@ -1705,11 +1705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b17c4bbf72f7b4409df5eb5e8ded08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolHolder
---- !u!50 &978887180 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 6790451962261992045, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-  m_PrefabInstance: {fileID: 2503369401204998767}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1013283831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,11 +5218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604205208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1849808396 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5003540913296410417, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-  m_PrefabInstance: {fileID: 2503369401204998767}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889727089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5755,10 +5745,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889727090}
     m_Modifications:
-    - target: {fileID: 7637884873152143, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 443630246041687691, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.671
@@ -5799,61 +5785,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2691720038495002333, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3202617912365746812, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: c2d
-      value: 
-      objectReference: {fileID: 1849808396}
-    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: r2d
-      value: 
-      objectReference: {fileID: 978887180}
-    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 1905085632}
-    - target: {fileID: 3883121882821517867, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4198444207534999223, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763192439859503048, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5045443975356222281, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5081281377845959492, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
       propertyPath: m_Name
       value: NormalPig
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081281377845959492, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5081281377845959492, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6065976679119434470, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732223930165766445, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5908,10 +5842,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5039127921554488813, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7296686520327195714, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: endPoint
       value: 
@@ -5927,10 +5857,6 @@ PrefabInstance:
     - target: {fileID: 7751210554410804688, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: m_Name
       value: PigThrowBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 7751210554410804688, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7794823496630614251, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: spriteRenderer

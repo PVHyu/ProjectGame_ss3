@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2005477480231609810}
   - component: {fileID: 6151514175186092096}
   - component: {fileID: 1211597177296115634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PigHealth
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 5242130029515928079}
   - component: {fileID: 4649451666952242990}
   - component: {fileID: 8632154026964660902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7371295235193482523}
   - component: {fileID: 4788185710881022668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PigAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 443630246041687691}
   - component: {fileID: 6790451962261992045}
   - component: {fileID: 6065976679119434470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalPig
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 5003540913296410417}
   - component: {fileID: 3883121882821517867}
   - component: {fileID: 1802719434065286360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PigMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,14 +732,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1835700171018324dbc1754e846dc70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PigMovement
-  moveSpeed: 1
+  moveSpeed: 2
   turnPauseDuration: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  r2d: {fileID: 6790451962261992045}
+  c2d: {fileID: 5003540913296410417}
   wallCheckDistance: 0.5
   groundCheckDistance: 0.5
   edgeCheckOffset: 0.05
+  spriteRenderer: {fileID: 4649451666952242990}
 --- !u!114 &1802719434065286360
 MonoBehaviour:
   m_ObjectHideFlags: 0

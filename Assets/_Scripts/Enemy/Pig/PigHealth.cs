@@ -12,9 +12,7 @@ public class PigHealth : DamageReceiver
     protected override void OnDead()
     {
         base.OnDead();
-        PigCtrl.Instance.PigAnimation.TriggerHit();
         PigCtrl.Instance.PigAnimation.TriggerDead();
-        Destroy(transform.parent.gameObject);
         Debug.Log(transform.name + ": OnDead", gameObject);
     }
 
