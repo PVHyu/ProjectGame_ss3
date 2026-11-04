@@ -5789,6 +5789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalPig
       objectReference: {fileID: 0}
+    - target: {fileID: 5081281377845959492, guid: c9767422cfadac44b91d9fb5018568b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5842,6 +5846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2456259057101973900, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7296686520327195714, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: endPoint
       value: 
@@ -5857,6 +5865,14 @@ PrefabInstance:
     - target: {fileID: 7751210554410804688, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: m_Name
       value: PigThrowBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751210554410804688, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794823496630614251, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7794823496630614251, guid: e311ec21378c9404b88d38585f1dfefb, type: 3}
       propertyPath: spriteRenderer
