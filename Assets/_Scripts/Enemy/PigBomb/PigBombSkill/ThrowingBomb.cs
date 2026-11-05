@@ -21,6 +21,14 @@ public class ThrowingBomb : BaseMonoBehaviour
     private float angleRad;
     private float throwDirection = 1f;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Throw(endPoint);
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();

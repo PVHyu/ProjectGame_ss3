@@ -32,11 +32,11 @@ public class NormalAttackBox : AttackBox
         this.circleCollider2D.enabled = false;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.name == "PigHealth") return;
+        if (collision.gameObject.name == "PigHealth") return;
 
-        damageReceiver = other.GetComponent<DamageReceiver>();
+        damageReceiver = collision.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
 
         this.Send(damageReceiver);

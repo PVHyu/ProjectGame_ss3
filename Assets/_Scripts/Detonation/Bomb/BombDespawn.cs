@@ -22,9 +22,16 @@ public class BombDespawn : Despawn<Detonation>
         Debug.Log(transform.name + ": Load BombCtrl", gameObject);
     }
 
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) return; 
+        Debug.Log("Collision with: " + collision.gameObject.name);
+        DoDespawn();
+    }
+
     public override void DoDespawn()
     {
-        bombCtrl.Animator.SetTrigger("BombOn");
+        bombCtrl.Animator.SetBool("BombOn", true);
         StartCoroutine(DelayDespawn());
     }
 
@@ -35,8 +42,9 @@ public class BombDespawn : Despawn<Detonation>
     }
 
     IEnumerator DelayDespawn()
-    {
+    {  
         yield return new WaitForSeconds(timeDelay);
+        bombCtrl.Animator.SetBool("BombOn", false);  
         this.spawner.Despawn(this.parent);
         SpawnExplosion();
     }
