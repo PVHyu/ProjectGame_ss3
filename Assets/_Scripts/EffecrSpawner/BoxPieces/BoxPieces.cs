@@ -66,7 +66,6 @@ public class BoxPieces : Effect
 
     public void ExplodePieces()
     {
-        // Phòng hờ trường hợp list vị trí gốc chưa kịp lưu
         if (this.initialLocalPositions.Count != this.pieces.Count) this.CacheInitialPositions();
 
         for (int i = 0; i < this.pieces.Count; i++)

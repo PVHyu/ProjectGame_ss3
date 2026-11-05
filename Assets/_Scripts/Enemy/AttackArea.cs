@@ -9,7 +9,7 @@ public class AttackArea : BaseMonoBehaviour
 
     private Transform targetPlayer;
     public Transform TargetPlayer => targetPlayer;
-    private PigThrowBoxCtrl pigThrowBoxCtrl;
+    private PigBoxCtrl pigThrowBoxCtrl;
 
     protected override void LoadComponents()
     {
@@ -21,7 +21,7 @@ public class AttackArea : BaseMonoBehaviour
      protected virtual void LoadPigThrowBoxCtrl()
     {
         if (this.pigThrowBoxCtrl != null) return;
-        this.pigThrowBoxCtrl = GetComponentInParent<PigThrowBoxCtrl>();
+        this.pigThrowBoxCtrl = GetComponentInParent<PigBoxCtrl>();
         Debug.Log(transform.name + ": Load PigThrowBoxCtrl", gameObject);
     }
 

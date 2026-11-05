@@ -5,8 +5,6 @@ using UnityEngine;
 public class DamageSender : BaseMonoBehaviour
 {
     [SerializeField] protected CircleCollider2D circleCollider2D;
-    [SerializeField] protected BoxCollider2D boxCollider2D;
-
     private int damage = 1;
     public int Damage { get => damage; set => damage = value; }
 

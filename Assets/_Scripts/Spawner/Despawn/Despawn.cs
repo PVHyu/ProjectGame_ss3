@@ -7,8 +7,8 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObject
     [SerializeField] protected T parent;
     [SerializeField] protected Spawner<T> spawner;
     [SerializeField] protected bool isDespawnByTime = true;
-    [SerializeField] protected float timeLife = 7f;
-    [SerializeField] protected float currentTime = 7f;
+    [SerializeField] protected float timeLife = 3f;
+    protected float currentTime = 0f;
 
     protected virtual void FixedUpdate()
     {
@@ -37,10 +37,10 @@ public abstract class Despawn<T> : DespawnBase where T : PoolObject
     protected virtual void DespawnByTime()
     {
         if(!this.isDespawnByTime) return;
-        this.currentTime -= Time.fixedDeltaTime;
-        if(this.currentTime > 0) return;
+        this.currentTime += Time.fixedDeltaTime;
+        if(this.currentTime < this.timeLife) return;
         this.DoDespawn();
-        this.currentTime = this.timeLife;
+        this.currentTime = 0f;
     }
 
     public override void DoDespawn()

@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class ThrowBoxAttack : BaseAttack
+public class ThrowBombAttack : BaseAttack
 {   
     [SerializeField] private AttackArea attackArea;
     public AttackArea AttackArea => attackArea;
-    [SerializeField] private ThrowingBox throwingBox;
-    public ThrowingBox ThrowingBox => throwingBox;
+    [SerializeField] private ThrowingBomb throwingBomb;
+    public ThrowingBomb ThrowingBomb => throwingBomb;
 
     [Header("Attack Timing")]
     [SerializeField] private float attackCooldown = 3f;
@@ -14,7 +14,8 @@ public class ThrowBoxAttack : BaseAttack
 
     private void Update()
     {
-        if (!PigThrowBoxCtrl.Instance.PigThrowBoxHealth.IsDead()) this.Attack();
+        // if (!PigBoxCtrl.Instance.PigThrowBoxHealth.IsDead()) this.Attack();
+        this.Attack();
     }
 
     protected override void LoadComponents()
@@ -33,9 +34,9 @@ public class ThrowBoxAttack : BaseAttack
 
     protected virtual void LoadThrowingBox()
     {
-        if (this.throwingBox != null) return;
-        this.throwingBox = GetComponent<ThrowingBox>();
-        Debug.Log(transform.name + ": Load ThrowingBox", gameObject);
+        if (this.throwingBomb != null) return;
+        this.throwingBomb = GetComponent<ThrowingBomb>();
+        Debug.Log(transform.name + ": Load ThrowingBomb", gameObject);
     }
 
     public override void Attack()
@@ -48,12 +49,12 @@ public class ThrowBoxAttack : BaseAttack
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
-        PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.TriggerAttack();
+        PigBoxCtrl.Instance.PigThrowBoxAnimation.TriggerAttack();
 
-        yield return new WaitUntil(() => PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
-        yield return new WaitUntil(() => !PigThrowBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => !PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
         
-        this.throwingBox.Throw(this.attackArea.TargetPlayer);
+        this.throwingBomb.Throw(this.attackArea.TargetPlayer);
 
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
