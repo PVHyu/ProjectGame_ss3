@@ -14,7 +14,7 @@ public class ThrowBoxAttack : BaseAttack
 
     private void Update()
     {
-        if (!PigBoxCtrl.Instance.PigThrowBoxHealth.IsDead()) this.Attack();
+        if (!PigBoxCtrl.Instance.PigBoxHealth.IsDead()) this.Attack();
     }
 
     protected override void LoadComponents()
@@ -48,10 +48,10 @@ public class ThrowBoxAttack : BaseAttack
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
-        PigBoxCtrl.Instance.PigThrowBoxAnimation.TriggerAttack();
+        PigBoxCtrl.Instance.PigBoxAnimation.TriggerAttack();
 
-        yield return new WaitUntil(() => PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
-        yield return new WaitUntil(() => !PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => PigBoxCtrl.Instance.PigBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => !PigBoxCtrl.Instance.PigBoxAnimation.IsAttack());
         
         this.throwingBox.Throw(this.attackArea.TargetPlayer);
 

@@ -14,6 +14,11 @@ public class PigBoxAnimation : BaseMonoBehaviour
     {
         PigBoxCtrl.Instance.Animator.SetBool("pickBox", value);
     }
+    
+    public void SetRunning(bool value)
+    {
+        PigBoxCtrl.Instance.Animator.SetBool("isRunning", value);
+    }
 
     public void SetFacingLeft(bool value)
     {

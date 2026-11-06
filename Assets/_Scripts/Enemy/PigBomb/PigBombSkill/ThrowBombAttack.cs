@@ -49,10 +49,10 @@ public class ThrowBombAttack : BaseAttack
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
-        PigBoxCtrl.Instance.PigThrowBoxAnimation.TriggerAttack();
+        PigBoxCtrl.Instance.PigBoxAnimation.TriggerAttack();
 
-        yield return new WaitUntil(() => PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
-        yield return new WaitUntil(() => !PigBoxCtrl.Instance.PigThrowBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => PigBoxCtrl.Instance.PigBoxAnimation.IsAttack());
+        yield return new WaitUntil(() => !PigBoxCtrl.Instance.PigBoxAnimation.IsAttack());
         
         this.throwingBomb.Throw(this.attackArea.TargetPlayer);
 
