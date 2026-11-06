@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AreaExplostionAttack : AttackBox
+public class AreaExplosionAttack : AttackBox
 {
     private DamageReceiver damageReceiver;
     private readonly HashSet<DamageReceiver> hitPlayer = new();
