@@ -35,5 +35,5 @@ public abstract class AttackBox : DamageSender
 
     public abstract void BeginAttack();
 
-    public abstract void EndAttack();
+    public virtual void EndAttack(){ }
 }
